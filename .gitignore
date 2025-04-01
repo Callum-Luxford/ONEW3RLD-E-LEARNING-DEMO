@@ -1,0 +1,23 @@
+# Node modules
+node_modules/
+
+# Env & secrets
+.env
+
+# OS-specific junk
+.DS_Store
+Thumbs.db
+
+# Certificate output (generated files)
+server/certificates/
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Optional: VSCode settings
+.vscode/
+
+# PM2 logs
+logs/
