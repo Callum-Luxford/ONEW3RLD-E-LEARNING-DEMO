@@ -10,12 +10,16 @@ const JWT_SECRET = process.env.JWT_SECRET;
 passport.use(
   new LocalStrategy(
     { usernameField: "email" }, // passport to use 'email' instead of defualt
-    async (ElementInternals, password, done) => {
+    async (email, password, done) => {
       try {
         const user = await User.findOne({ email });
         if (!user) return done(null, false, { message: "Incorrect email." });
 
         const isMatch = await user.comparePassword(password);
+        console.log("Attempting login for:", email);
+        console.log("User found:", user);
+        console.log("Password isMatch:", await user.comparePassword(password));
+
         if (!isMatch)
           return done(null, false, { message: "Incorrect password." });
 
@@ -29,7 +33,10 @@ passport.use(
 
 // JWT Strategy - for protecting routes using token
 const jwtOptions = {
-  jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
+  jwtFromRequest: ExtractJwt.fromExtractors([
+    ExtractJwt.fromAuthHeaderAsBearerToken(),
+    ExtractJwt.fromExtractors([(req) => req?.cookies?.token]),
+  ]),
   secretOrKey: JWT_SECRET,
 };
 

@@ -1,0 +1,16 @@
+<h2>Register</h2>
+
+<form action="/auth/register" method="POST" class="auth-form">
+    <label for="fullName">Full Name</label>
+    <input type="text" name="fullName" id="fullName" required />
+
+    <label for="email">Email</label>
+    <input type="email" name="email" id="email" required />
+
+    <label for="password">Password</label>
+    <input type="password" name="password" id="password" required />
+
+    <button type="submit">Register</button>
+</form>
+
+<p>Already have an account? <a href="/auth/login">Login</a></p>
