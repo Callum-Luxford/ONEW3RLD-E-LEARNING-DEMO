@@ -39,9 +39,11 @@ app.use((req, res, next) => {
 // Middleware Routes: 
 const authRoutes = require("./routes/authRoutes");
 const dashboardRoutes = require("./routes/dashboardRoutes");
+const courseRoutes = require("./routes/courseRoutes");
 
 app.use("/auth", authRoutes);
 app.use("/dashboard", dashboardRoutes);
+app.use("/courses", courseRoutes);
 
 // Root request
 app.get("/", (req, res) => {

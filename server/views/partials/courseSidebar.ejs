@@ -1,0 +1,16 @@
+<div class="sidebar" style="width: 250px; background: #f8f8f8; padding: 20px;">
+    <% course.modules.forEach(module=> { %>
+        <h4>
+            <%= module.title %>
+        </h4>
+        <ul>
+            <% module.lessons.forEach(lesson=> { %>
+                <li>
+                    <a href="/courses/<%= course._id %>/modules/<%= module.id %>/lessons/<%= lesson.id %>">
+                        <%= lesson.title %>
+                    </a>
+                </li>
+                <% }) %>
+        </ul>
+        <% }) %>
+</div>

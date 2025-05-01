@@ -1,2 +1,18 @@
 <h2>Welcome, <%= user.fullName %>!</h2>
-<p>This is your dashboard. You'll see your courses here once enrolled.</p>
+
+<h3>Your Courses</h3>
+
+<% if (courses.length> 0) { %>
+    <ul>
+        <% courses.forEach(course=> { %>
+            <li>
+                <strong>
+                    <%= course.title %>
+                </strong><br />
+                <a href="/courses/<%= course._id %>">View Course</a>
+            </li>
+            <% }) %>
+    </ul>
+    <% } else { %>
+        <p>You are not enrolled in any courses.</p>
+        <% } %>

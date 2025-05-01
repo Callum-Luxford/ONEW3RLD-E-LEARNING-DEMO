@@ -1,0 +1,11 @@
+<h3>
+    <%= lesson.title %>
+</h3>
+
+<% if (lesson.videoUrl) { %>
+    <video src="<%= lesson.videoUrl %>" controls style="max-width: 100%;"></video>
+    <% } %>
+
+        <div class="lesson-content">
+            <%- lesson.content %>
+        </div>

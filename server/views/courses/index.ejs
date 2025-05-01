@@ -1,0 +1,17 @@
+<div class="course-layout" style="display: flex;">
+    <%- include('../partials/courseSidebar', { course }) %>
+
+        <div class="course-content" style="flex: 1; padding: 20px;">
+            <% if (currentLesson) { %>
+                <%- include('lesson', { lesson: currentLesson }) %>
+                    <% } else { %>
+                        <h2>
+                            <%= course.title %>
+                        </h2>
+                        <p>
+                            <%= course.description %>
+                        </p>
+                        <p>Select a lesson from the sidebar to begin.</p>
+                        <% } %>
+        </div>
+</div>
