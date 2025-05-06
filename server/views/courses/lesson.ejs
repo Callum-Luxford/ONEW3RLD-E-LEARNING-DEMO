@@ -9,3 +9,33 @@
         <div class="lesson-content">
             <%- lesson.content %>
         </div>
+
+        <hr>
+
+        <% if (!isCompleted) { %>
+            <% if (lesson.quiz && lesson.quiz.questions && lesson.quiz.questions.length> 0) { %>
+                <div style="background: #f4f4f4; padding: 20px; border-radius: 10px; text-align: center;">
+                    <p><strong>This quiz consists of <%= lesson.quiz?.questions?.length || 3 %> questions.</strong></p>
+                    <p><em>Get all <%= lesson.quiz?.questions?.length || 3 %> questions correct to progress to the next
+                                module</em></p>
+                    <form method="GET"
+                        action="/courses/<%= course._id %>/modules/<%= lesson.moduleId || 'mod-1' %>/lessons/<%= lesson.id %>/quiz?q=0">
+
+                        <!-- Placeholder for now -->
+                        <button type="submit" style="margin-top: 15px; padding: 10px 30px;">Start Quiz</button>
+                    </form>
+                </div>
+                <% } else { %>
+                    <form method="POST" action="/courses/<%= course._id %>/complete/<%= lesson.id %>">
+                        <button type="submit" style="margin-top: 20px; padding: 10px 20px;">
+                            <%= lesson.id==="intro-1" ? "✅ Start Course" : "✅ Complete Lesson" %>
+                        </button>
+                    </form>
+                    <% } %>
+                        <% } else { %>
+                            <% if (lesson.id==="intro-1" ) { %>
+                                <p><strong>You're ready to begin Module 1!</strong></p>
+                                <% } else { %>
+                                    <p><strong>This lesson is already marked as complete.</strong></p>
+                                    <% } %>
+                                        <% } %>

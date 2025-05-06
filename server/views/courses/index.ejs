@@ -1,5 +1,6 @@
 <div class="course-layout" style="display: flex;">
-    <%- include('../partials/courseSidebar', { course }) %>
+    <%- include('../partials/courseSidebar', { course, currentLesson, user }) %>
+
 
         <div class="course-content" style="flex: 1; padding: 20px;">
             <% if (currentLesson) { %>

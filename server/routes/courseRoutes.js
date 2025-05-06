@@ -14,4 +14,11 @@ router.get(
   courseController.viewLesson
 );
 
+// Marks current lesson complete for tracking
+router.post(
+  "/:courseId/complete/:lessonId",
+  requireAuth,
+  courseController.completeLesson
+);
+
 module.exports = router;

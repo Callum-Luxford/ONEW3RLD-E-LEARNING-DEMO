@@ -1,17 +1,27 @@
 // Modules
 const mongoose = require("mongoose");
 
-// courseSchema
 const courseSchema = new mongoose.Schema({
   title: { type: String, required: true },
   description: String,
+
+  // Success message content (optional but scalable)
+  successMessage: {
+    heading: { type: String, default: "Congratulations {{name}}!" },
+    body: {
+      type: String,
+      default: "You've successfully completed the course.",
+    },
+    downloadLabel: { type: String, default: "Download Your Certificate" },
+  },
+
   modules: [
     {
-      id: String, // module ID (used in URLs)
+      id: String,
       title: String,
       lessons: [
         {
-          id: String, // lesson ID (used in URLs)
+          id: String,
           title: String,
           content: String,
           videoUrl: String,
@@ -20,7 +30,7 @@ const courseSchema = new mongoose.Schema({
               {
                 question: String,
                 options: [String],
-                answerIndex: Number,
+                answerIndex: [Number],
               },
             ],
           },
@@ -28,6 +38,7 @@ const courseSchema = new mongoose.Schema({
       ],
     },
   ],
+
   createdAt: { type: Date, default: Date.now },
 });
 

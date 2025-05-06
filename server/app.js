@@ -36,14 +36,16 @@ app.use((req, res, next) => {
   next();
 });
 
-// Middleware Routes: 
+// Middleware Routes:
 const authRoutes = require("./routes/authRoutes");
 const dashboardRoutes = require("./routes/dashboardRoutes");
 const courseRoutes = require("./routes/courseRoutes");
+const quizRoutes = require("./routes/quiz/quizRoutes");
 
 app.use("/auth", authRoutes);
 app.use("/dashboard", dashboardRoutes);
 app.use("/courses", courseRoutes);
+app.use("/courses", quizRoutes);
 
 // Root request
 app.get("/", (req, res) => {

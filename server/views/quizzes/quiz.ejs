@@ -1,0 +1,30 @@
+<h2>
+    <%= lesson.title %>
+</h2>
+<p>Answer all questions correctly to complete the module.</p>
+
+<form method="POST" action="/courses/<%= course._id %>/modules/<%= module.id %>/lessons/<%= lesson.id %>/quiz"
+    id="quizForm">
+    <% lesson.quiz.questions.forEach((question, qIndex)=> { %>
+        <div class="question-block" data-index="<%= qIndex %>" style="<%= qIndex === 0 ? '' : 'display:none;' %>">
+            <h3>Question <%= qIndex + 1 %> / <%= totalQuestions %>
+            </h3>
+            <p>
+                <%= question.question %>
+            </p>
+
+            <% question.options.forEach((option, i)=> { %>
+                <label>
+                    <input type="checkbox" name="answers[<%= qIndex %>][]" value="<%= i %>">
+                    <%= option %>
+                </label><br />
+                <% }) %>
+
+                    <% if (qIndex < totalQuestions - 1) { %>
+                        <button type="button" class="next-btn">Next Question</button>
+                        <% } else { %>
+                            <button type="submit">Submit Quiz</button>
+                            <% } %>
+        </div>
+        <% }) %>
+</form>
