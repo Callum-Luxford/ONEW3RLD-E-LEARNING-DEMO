@@ -14,7 +14,7 @@ exports.viewCourse = async (req, res) => {
       title: course.title,
       course,
       currentLesson: null,
-      user, 
+      user,
     });
   } catch (error) {
     console.error(error);
@@ -131,5 +131,45 @@ exports.completeLesson = async (req, res) => {
   } catch (err) {
     console.error(err);
     res.status(500).send("Failed to complete lesson");
+  }
+};
+
+// Show all courses for /courses/list
+exports.showAllCourses = async (req, res) => {
+  try {
+    const courses = await Course.find();
+    const user = await User.findById(req.user._id);
+    const enrolledIds = user.enrolledCourses.map((c) => c.toString());
+
+    // res.locals.user = user;
+
+    res.render("marketplace/list", {
+      title: "Available Courses",
+      courses,
+      enrolledIds,
+    });
+  } catch (err) {
+    console.error("Error loading course list:", err);
+    res.status(500).send("Course list error");
+  }
+};
+
+// Handle course enrollment
+exports.enrollInCourse = async (req, res) => {
+  const { courseId } = req.params;
+
+  try {
+    const user = await User.findById(req.user._id);
+
+    if (!user.enrolledCourses.includes(courseId)) {
+      user.enrolledCourses.push(courseId);
+      user.progress.push({ course: courseId, completedLessons: [] });
+      await user.save();
+    }
+
+    res.redirect("marketplace/list");
+  } catch (err) {
+    console.error("Enrollment error:", err);
+    res.status(500).send("Enrollment failed");
   }
 };

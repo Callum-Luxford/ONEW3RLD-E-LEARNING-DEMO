@@ -1,0 +1,24 @@
+<h2>Available Courses</h2>
+
+<div class="course-list">
+    <% courses.forEach(course=> {
+        const isEnrolled = enrolledIds.includes(course._id.toString());
+        %>
+        <div class="course-card" style="border: 1px solid #ccc; padding: 15px; margin-bottom: 20px;">
+            <h3>
+                <%= course.title %>
+            </h3>
+            <p>
+                <%= course.description %>
+            </p>
+
+            <% if (isEnrolled) { %>
+                <button disabled>✅ Enrolled</button>
+                <% } else { %>
+                    <form method="POST" action="/courses/<%= course._id %>/enroll">
+                        <button type="submit">📘 Enroll Now</button>
+                    </form>
+                    <% } %>
+        </div>
+        <% }) %>
+</div>

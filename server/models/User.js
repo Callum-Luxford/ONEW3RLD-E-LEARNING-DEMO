@@ -16,9 +16,17 @@ const userSchema = new mongoose.Schema({
         {
           moduleId: String,
           score: Number,
-          passwd: Boolean,
+          passed: Boolean, // you had "passwd" – typo fixed here
         },
       ],
+    },
+  ],
+  certificates: [
+    {
+      courseId: { type: mongoose.Schema.Types.ObjectId, ref: "Course" },
+      filePath: String, // e.g. '/certificates/userId-courseId.pdf'
+      issuedAt: { type: Date, default: Date.now },
+      certificateId: String, // UUID or unique hash
     },
   ],
   createdAt: { type: Date, default: Date.now },

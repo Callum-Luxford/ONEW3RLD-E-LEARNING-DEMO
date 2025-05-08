@@ -1,0 +1,23 @@
+<div class="verify-container" style="max-width: 700px; margin: 50px auto;">
+    <h1>Verified Certificate</h1>
+    <p>This certificate has been issued by RSA UAE LMS.</p>
+
+    <hr>
+
+    <p><strong>Full Name:</strong>
+        <%= user.fullName %>
+    </p>
+    <p><strong>Course:</strong>
+        <%= course.title %>
+    </p>
+    <p><strong>Date Issued:</strong>
+        <%= cert.issuedAt.toLocaleDateString() %>
+    </p>
+    <p><strong>Certificate ID:</strong>
+        <%= cert.certId %>
+    </p>
+
+    <hr>
+
+    <a href="<%= cert.filePath %>" target="_blank">🔗 View PDF Certificate</a>
+</div>

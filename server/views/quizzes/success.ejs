@@ -16,14 +16,11 @@
 
     <% if (hasCompletedCourse) { %>
         <div class="certificate-buttons">
-            <a href="/certificate/download/<%= course._id %>" class="btn cert-btn">
+            <a href="/certificate/<%= course._id %>/download" class="btn cert-btn">
                 <i class="fa fa-file-pdf-o"></i>
                 <span>
                     <%= course.title %>
                 </span>
-            </a>
-            <a href="/certificate/download/<%= course._id %>" class="btn icon-btn">
-                <i class="fa fa-download"></i>
             </a>
         </div>
         <% } else { %>

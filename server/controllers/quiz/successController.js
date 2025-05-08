@@ -12,13 +12,17 @@ exports.renderSuccessPage = async (req, res) => {
     const user = await User.findById(req.user._id);
     const progress = user.progress.find((p) => p.course.equals(courseId));
 
+    // For later - (Course-Wide)
+    // const hasCompletedCourse =
+    //   progress &&
+    //   course.modules.every((mod) =>
+    //     mod.lessons.every((lesson) =>
+    //       progress.completedLessons.includes(lesson.id)
+    //     )
+    //   );
+
     const hasCompletedCourse =
-      progress &&
-      course.modules.every((mod) =>
-        mod.lessons.every((lesson) =>
-          progress.completedLessons.includes(lesson.id)
-        )
-      );
+      progress && progress.completedLessons.includes("1-1-quiz");
 
     res.render("quizzes/success", {
       title: "Course Completed",

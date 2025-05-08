@@ -19,6 +19,11 @@ const app = express();
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static(path.join(__dirname, "..", "public")));
+// view/download existing certificates
+app.use(
+  "/certificates",
+  express.static(path.join(__dirname, "..", "certificates"))
+);
 app.use(cookieParser());
 
 // EJS + Layout / View Engine
@@ -41,11 +46,13 @@ const authRoutes = require("./routes/authRoutes");
 const dashboardRoutes = require("./routes/dashboardRoutes");
 const courseRoutes = require("./routes/courseRoutes");
 const quizRoutes = require("./routes/quiz/quizRoutes");
+const certificateRoutes = require("./routes/certificateRoutes");
 
 app.use("/auth", authRoutes);
 app.use("/dashboard", dashboardRoutes);
 app.use("/courses", courseRoutes);
 app.use("/courses", quizRoutes);
+app.use("/certificate", certificateRoutes);
 
 // Root request
 app.get("/", (req, res) => {
