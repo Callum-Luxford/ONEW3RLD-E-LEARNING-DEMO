@@ -167,7 +167,7 @@ exports.enrollInCourse = async (req, res) => {
       await user.save();
     }
 
-    res.redirect("marketplace/list");
+    res.redirect(`/courses/${courseId}`);
   } catch (err) {
     console.error("Enrollment error:", err);
     res.status(500).send("Enrollment failed");

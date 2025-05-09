@@ -7,14 +7,33 @@
     <title>
         <%= title %> | RSA DEMO
     </title>
-    <link rel="stylesheet" href="/styles/style.css">
+    <!-- GLOBAL STYLES (always loaded) -->
+    <link rel="stylesheet" href="/styles/root.css">
+    <link rel="stylesheet" href="/styles/layout.css">
+    <link rel="stylesheet" href="/styles/navbar.css">
+
+    <!-- PAGE-SPECIFIC STYLES -->
+    <% if (typeof pageStyles !=='undefined' ) { %>
+        <% pageStyles.forEach(style=> { %>
+            <link rel="stylesheet" href="/styles/<%= style %>">
+            <% }) %>
+                <% } %>
 </head>
 
 <body>
     <%- include('../partials/navbar.ejs') %>
         <%- body %>
 
-    <script src="/js/quiz-ui.js"></script>
+
+            <!-- GLOBAL SCRIPTS (always loaded) -->
+            <script src="/js/quiz-ui.js" defer></script>
+
+            <!-- PAGE-SPECIFIC SCRIPTS -->
+            <% if (typeof pageScripts !=='undefined' ) { %>
+                <% pageScripts.forEach(script=> { %>
+                    <script src="/js/<%= script %>" defer></script>
+                    <% }) %>
+                        <% } %>
 </body>
 
 </html>

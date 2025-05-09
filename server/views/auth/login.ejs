@@ -1,13 +1,25 @@
-<h2>Login</h2>
+<div class="auth-container">
+    <div class="auth-box">
+        <img src="/images/rsa-logo.png" alt="RSA UAE Logo" class="auth-logo">
 
-<form action="/auth/login" method="POST" class="auth-form">
-    <label for="email">Email</label>
-    <input type="email" name="email" id="email" required />
+        <form method="POST" action="/auth/login">
+            <input type="text" name="email" placeholder="Email" required>
+            <input type="password" name="password" placeholder="Password" required>
 
-    <label for="password">Password</label>
-    <input type="password" name="password" id="password" required />
+            <div class="auth-terms">
+                <input type="checkbox" id="terms" name="terms" required>
+                <label for="terms">Terms & Conditions</label>
+            </div>
 
-    <button type="submit">Login</button>
-</form>
+            <button type="submit" class="auth-submit-button">Login</button>
+        </form>
 
-<p>Don't have an account? <a href="/auth/register">Register</a></p>
+        <!-- ADD LATER -->
+        <!-- <button class="face-login">
+            <i class="icon-camera"></i> Face Recognition
+        </button> -->
+
+        <p class="change-auth-link">Don't have an account? <a href="/auth/register">Register</a></p>
+    </div>
+</div>
+

@@ -1,0 +1,141 @@
+/* ROOT STYLES */
+:root {
+
+    /* ----------- Fixed Font sizes ------------ */
+    /* ----------- Fixed Font sizes ------------ */
+    /* --font-size-2xs: 0.625rem;
+    --font-size-xs: 0.75rem;
+    --font-size-sm: 0.875rem;
+    --font-size-md: 1rem;
+    --font-size-lg: 1.125rem;
+    --font-size-xl: 1.25rem;
+    --font-size-2xl: 1.5rem;
+    --font-size-3xl: 1.75rem;
+    --font-size-4xl: 2rem;
+    --font-size-5xl: 2.25rem;
+    --font-size-6xl: 2.5rem;
+    --font-size-7xl: 3rem;
+    --font-size-8xl: 3.5rem;
+    --font-size-9xl: 4rem;
+    --font-size-10xl: 4.5rem;
+    --font-size-11xl: 5rem;
+    --font-size-12xl: 6rem; */
+
+    /* ----------- Font sizes clamped ------------ */
+    /* ----------- Font sizes clamped ------------ */
+    --font-size-2xs: clamp(0.5rem, 1vw, 0.625rem);
+    --font-size-xs: clamp(0.625rem, 1vw, 0.75rem);
+    --font-size-sm: clamp(0.75rem, 1.1vw, 0.875rem);
+    --font-size-md: clamp(0.875rem, 1.2vw, 1rem);
+    --font-size-lg: clamp(1rem, 1.3vw, 1.125rem);
+    --font-size-xl: clamp(1.125rem, 1.5vw, 1.25rem);
+    --font-size-2xl: clamp(1.25rem, 1.8vw, 1.5rem);
+    --font-size-3xl: clamp(1.5rem, 2vw, 1.75rem);
+    --font-size-4xl: clamp(1.75rem, 2.2vw, 2rem);
+    --font-size-5xl: clamp(2rem, 2.5vw, 2.25rem);
+    --font-size-6xl: clamp(2.25rem, 2.8vw, 2.5rem);
+    --font-size-7xl: clamp(2.5rem, 3vw, 3rem);
+    --font-size-8xl: clamp(3rem, 3.5vw, 3.5rem);
+    --font-size-9xl: clamp(3.5rem, 4vw, 4rem);
+    --font-size-10xl: clamp(4rem, 4.5vw, 4.5rem);
+    --font-size-11xl: clamp(4.5rem, 5vw, 5rem);
+    --font-size-12xl: clamp(5rem, 6vw, 6rem);
+
+    /* ----------- Font weights ------------ */
+    /* ----------- Font weights ------------ */
+    --font-weight-1: 100;
+    --font-weight-2: 200;
+    --font-weight-3: 300;
+    --font-weight-4: 400;
+    --font-weight-5: 500;
+    --font-weight-6: 600;
+    --font-weight-7: 700;
+    --font-weight-8: 800;
+    --font-weight-9: 900;
+
+    /* ----------- Letter spacing ------------ */
+    /* ----------- Letter spacing ------------ */
+    --letter-spacing-1: -0.08em;
+    --letter-spacing-2: -0.04em;
+    --letter-spacing-3: -0.02em;
+    --letter-spacing-4: 0;
+    --letter-spacing-5: 0.02em;
+    --letter-spacing-6: 0.04em;
+    --letter-spacing-7: 0.08em;
+
+    /* ----------- border radius ------------ */
+    /* ----------- border radius ------------ */
+    --border-radius-none: 0rem;
+    --border-radius-2xs: 0.1875rem;
+    --border-radius-xs: 0.25rem;
+    --border-radius-sm: 0.375rem;
+    --border-radius-md: 0.5rem;
+    --border-radius-lg: 0.75rem;
+    --border-radius-xl: 1rem;
+    --border-radius-2xl: 1.5rem;
+    --border-radius-full: 9999px;
+
+    /* ----------- box-shadows ------------ */
+    /* ----------- box-shadows ------------ */
+    --shadow-2xs: 0 1px 2px rgba(134, 144, 162, 0.1);
+    --shadow-xs: 0 2px 4px rgba(134, 144, 162, 0.15);
+    --shadow-sm: 0 3px 6px rgba(134, 144, 162, 0.2);
+    --shadow-md: 0 4px 8px rgba(134, 144, 162, 0.25);
+    --shadow-lg: 0 6px 12px rgba(134, 144, 162, 0.3);
+    --shadow-xl: 0 12px 24px rgba(134, 144, 162, 0.35);
+    --shadow-2xl: 0 24px 48px rgba(134, 144, 162, 0.4);
+
+    --shadow-focus: 0 0 0 4px rgba(0, 84, 203, 0.2);
+    --shadow-success: 0 0 0 4px rgba(18, 181, 57, 0.2);
+    --shadow-warning: 0 0 0 4px rgba(210, 127, 0, 0.2);
+    --shadow-danger: 0 0 0 4px rgba(203, 18, 0, 0.2);
+    --shadow-info: 0 0 0 4px rgba(0, 200, 177, 0.2);
+
+    /* ----------- filter blur ------------ */
+    /* ----------- filter blur ------------ */
+    --filter-blur-2xs: 4px;
+    --filter-blur-xs: 8px;
+    --filter-blur-sm: 12px;
+    --filter-blur-md: 16px;
+    --filter-blur-lg: 24px;
+    --filter-blur-xl: 32px;
+    --filter-blur-2xl: 48px;
+
+    /* ----------- Font colors ------------ */
+    /* ----------- Font colors ------------ */
+    --font-clr-1: #FFFFFF;
+    --font-clr-2: #424242;
+    --font-clr-3: #000000;
+    --font-clr-4: #FFD000;
+
+    /* ----------- theme colors ------------ */
+    /* ----------- theme colors ------------ */
+    --theme-clr-1: #000000;
+    --theme-clr-2: #FFD000;
+    --theme-clr-3: #FFFFFF;
+    --theme-clr-4: #424242;
+    --theme-clr-5: ;
+
+
+    /* ----------- Extra CSS / Project Specific ------------ */
+    /* ----------- Extra CSS / Project Specific ------------ */
+
+    --box-shadow-border: 0 0 0 0.25px rgba(255, 204, 0, 0.5);
+    --border-clr-1: grey;
+    --border-focus-clr: gold;
+    --border-radius-1: 30px; 
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+}
