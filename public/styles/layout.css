@@ -1,0 +1,12 @@
+/* Shared layout styles */
+@media (min-width: 1024px) {
+    .with-sidebar {
+        margin-left: 240px;
+        /* width of the sidebar */
+        padding: 2rem;
+    }
+}
+
+body {
+    background: var(--theme-clr-5);
+}

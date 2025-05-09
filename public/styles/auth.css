@@ -57,8 +57,6 @@ body {
     -webkit-background-clip: padding-box, border-box;
     box-shadow: none;
     outline: none;
-
-    /* transition: border-color 0.2s ease, box-shadow 0.2s ease; */
 }
 
 .auth-box input::placeholder {
@@ -69,6 +67,8 @@ body {
     border: 1px solid var(--border-focus-clr);
     box-shadow: 0 0 6px rgba(255, 215, 0, 0.5);
     outline: none;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    transition: transform 0.2s ease, border 0.2s ease;
 }
 
 .auth-terms {
@@ -130,7 +130,7 @@ body {
 } */
 
 .change-auth-link a {
-   color: var(--font-clr-4);
+    color: var(--font-clr-4);
 }
 
 /* INPUT AUTOFILL FIX STYLES */

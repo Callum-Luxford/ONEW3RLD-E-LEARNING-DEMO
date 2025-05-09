@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="/styles/root.css">
     <link rel="stylesheet" href="/styles/layout.css">
     <link rel="stylesheet" href="/styles/navbar.css">
+    <link rel="stylesheet" href="/styles/components/pageSubheader.css">
 
     <!-- PAGE-SPECIFIC STYLES -->
     <% if (typeof pageStyles !=='undefined' ) { %>
@@ -21,19 +22,23 @@
 </head>
 
 <body>
-    <%- include('../partials/navbar.ejs') %>
+    <% if (typeof hideNavbar==='undefined' || !hideNavbar) { %>
+        <%- include('../partials/navbar.ejs') %>
+            <% } %>
+
         <%- body %>
 
+        
+        <!-- GLOBAL SCRIPTS (always loaded) -->
+        <script src="/js/quiz-ui.js" defer></script>
+        <script src="/js/navbar.js" defer></script>
 
-            <!-- GLOBAL SCRIPTS (always loaded) -->
-            <script src="/js/quiz-ui.js" defer></script>
-
-            <!-- PAGE-SPECIFIC SCRIPTS -->
-            <% if (typeof pageScripts !=='undefined' ) { %>
-                <% pageScripts.forEach(script=> { %>
-                    <script src="/js/<%= script %>" defer></script>
-                    <% }) %>
-                        <% } %>
+        <!-- PAGE-SPECIFIC SCRIPTS -->
+        <% if (typeof pageScripts !=='undefined' ) { %>
+            <% pageScripts.forEach(script=> { %>
+                <script src="/js/<%= script %>" defer></script>
+                <% }) %>
+                    <% } %>
 </body>
 
 </html>

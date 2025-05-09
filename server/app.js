@@ -41,6 +41,13 @@ app.use((req, res, next) => {
   next();
 });
 
+// currentRoute available globally for nav highlighting
+app.use((req, res, next) => {
+  res.locals.currentRoute = req.path;
+  next();
+});
+
+
 // Middleware Routes:
 const authRoutes = require("./routes/authRoutes");
 const dashboardRoutes = require("./routes/dashboardRoutes");

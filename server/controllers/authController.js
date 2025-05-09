@@ -6,7 +6,11 @@ const { issueToken } = require("../services/authService");
 // GET: Registration from
 exports.getRegister = (req, res) => {
   res.setHeader("Cache-Control", "no-store");
-  res.render("auth/register", { title: "Register", pageStyles: ["auth.css"] });
+  res.render("auth/register", {
+    title: "Register",
+    hideNavbar: true,
+    pageStyles: ["auth.css"],
+  });
 };
 
 // POST: Handle user registration
@@ -37,7 +41,11 @@ exports.postRegister = async (req, res) => {
 // GET: Login form
 exports.getLogin = (req, res) => {
   res.setHeader("Cache-Control", "no-store");
-  res.render("auth/login", { title: "Login", pageStyles: ["auth.css"] });
+  res.render("auth/login", {
+    title: "Login",
+    hideNavbar: true,
+    pageStyles: ["auth.css"],
+  });
 };
 
 // POST: Handle login

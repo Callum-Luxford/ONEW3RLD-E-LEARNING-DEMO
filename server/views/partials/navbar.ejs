@@ -1,7 +1,29 @@
+<header class="header">
+    <div class="header-group">
+        <img src="/images/rsa-logo.png" alt="RSA UAE Logo" class="logo-header" />
+
+        <div class="header-links">
+            <!-- 
+                <img class="header-icon search-icon" src="/icons/search.png" alt="search">
+             -->
+
+            <img class="header-icon flag-icon" src="/icons/uk.png" alt="Language English">
+
+            <div id="menuToggle" class="menu-toggle">
+                <img id="menuIcon" src="/icons/burger-menu.png" alt="menu button">
+            </div>
+        </div>
+    </div>
+</header>
+
 <% if (user) { %>
-    <a href="/dashboard">Dashboard</a>
-    <a href="/courses/list">Courses</a>
-    <a href="/auth/logout">Logout</a>
-    <% } else { %>
-        
-        <% } %>
+    <!-- Overlay nav -->
+    <nav id="mobileNavOverlay" class="nav-overlay">
+        <div class="nav-links">
+            <a href="/dashboard" class="nav-link <%= currentRoute === '/dashboard' ? 'active' : '' %>">Dashboard</a>
+            <a href="/courses/list" class="nav-link <%= currentRoute === '/courses/list' ? 'active' : '' %>">Courses</a>
+            <a href="/auth/logout">Logout</a>
+        </div>
+    </nav>
+
+    <% } %>

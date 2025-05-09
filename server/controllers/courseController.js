@@ -15,6 +15,8 @@ exports.viewCourse = async (req, res) => {
       course,
       currentLesson: null,
       user,
+      // preTitleText: ``,
+      // pageTitle: ``,
     });
   } catch (error) {
     console.error(error);
@@ -147,6 +149,8 @@ exports.showAllCourses = async (req, res) => {
       title: "Available Courses",
       courses,
       enrolledIds,
+      preTitleText: "Available",
+      pageTitle: "Courses",
     });
   } catch (err) {
     console.error("Error loading course list:", err);

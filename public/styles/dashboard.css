@@ -1,0 +1,142 @@
+body {
+    background: var(--theme-clr-5);
+    font-family: 'Arial', sans-serif;
+    color: var(--theme-clr-1);
+    margin: 0;
+}
+
+/* Dashboard content */
+.dashboard-main {
+    padding: 20px;
+}
+
+
+/* Course Cards */
+.course-grid {
+    margin-top: 1.5rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+}
+
+.course-card {
+    background: var(--theme-clr-3);
+    border-radius: var(--border-radius-1);
+    padding: 1rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    position: relative;
+
+    display: flex;
+    flex-direction: column;
+    gap: .2rem;
+}
+
+.course-card-btn {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Arrow button */
+.arrow-btn {
+    padding: 0.6rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.arrow-btn img {
+    height: 30px;
+}
+
+.course-badge {
+    border: 2px solid var(--theme-clr-2);
+    border-radius: var(--border-radius-1);
+    padding: .3rem .6rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: .3rem;
+    color: var(--font-clr-4);
+    font-weight: var(--font-weight-6);
+    background-color: var(--theme-clr-6);
+}
+
+.course-badge img {
+    height: 15px;
+    filter: var(--icon-clr-2);
+}
+
+.course-card h2 {
+    font-size: var(--font-size-2xl);
+    font-weight: var(--font-weight-6);
+    margin: 0.3rem 0;
+    color: var(--font-clr-2);
+}
+
+.course-card h4 {
+    font-size: var(--font-size-sm);
+    color: var(--font-clr-2);
+    font-weight: var(--font-weight-6);
+    margin: 0.1rem 0;
+    font-weight: 600;
+}
+
+.course-subtitle {
+    font-size: var(--font-size-md);
+    color: var(--font-clr-5);
+    font-style: italic;
+    margin-bottom: 1rem;
+
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+}
+
+.card-info-icon {
+    height: 12px;
+    filter: var(--icon-clr-3);
+}
+
+.course-progress {
+    margin-top: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+}
+
+/* Update progress bar if needed */
+.progress-bar {
+    height: 12px;
+    background: #eee;
+    border-radius: var(--border-radius-1);
+    overflow: hidden;
+    margin-bottom: 6px;
+}
+
+.progress-fill {
+    height: 100%;
+    background: #FFD000;
+    transition: width 0.4s ease;
+
+    width: 0%;
+    transition: width 1s ease-in-out;
+}
+
+.progress-text {
+    font-size: var(--font-size-sm);
+    color: var(--font-clr-5);
+    font-weight: var(--font-weight-6);
+    text-align: right;
+}
+
+/* === Adjust main layout for desktop sidebar === */
+@media (min-width: 1024px) {
+
+    .dashboard-main,
+    .user-greeting-card {
+        margin-left: 240px;
+        /* match sidebar width */
+    }
+}

@@ -107,6 +107,7 @@
     --font-clr-2: #424242;
     --font-clr-3: #000000;
     --font-clr-4: #FFD000;
+    --font-clr-5: #a0a0a0;
 
     /* ----------- theme colors ------------ */
     /* ----------- theme colors ------------ */
@@ -114,7 +115,8 @@
     --theme-clr-2: #FFD000;
     --theme-clr-3: #FFFFFF;
     --theme-clr-4: #424242;
-    --theme-clr-5: ;
+    --theme-clr-5: #f2f2f2;
+    --theme-clr-6: #fffbe9;
 
 
     /* ----------- Extra CSS / Project Specific ------------ */
@@ -123,7 +125,11 @@
     --box-shadow-border: 0 0 0 0.25px rgba(255, 204, 0, 0.5);
     --border-clr-1: grey;
     --border-focus-clr: gold;
-    --border-radius-1: 30px; 
+    --border-radius-1: 30px;
+
+    --icon-clr-1: invert(100%) sepia(100%) saturate(0%) hue-rotate(288deg) brightness(102%) contrast(102%);
+    --icon-clr-2: invert(72%) sepia(84%) saturate(998%) hue-rotate(360deg) brightness(105%) contrast(102%);
+    --icon-clr-3: invert(67%) sepia(4%) saturate(0%) hue-rotate(178deg) brightness(95%) contrast(90%);
 }
 
 *,
@@ -138,4 +144,5 @@ body {
     width: 100%;
     height: 100%;
     box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
 }

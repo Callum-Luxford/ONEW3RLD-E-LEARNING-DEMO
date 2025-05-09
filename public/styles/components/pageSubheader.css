@@ -1,0 +1,24 @@
+.user-greeting-card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--theme-clr-1);
+    color: var(--theme-clr-5);
+    border-bottom-left-radius: 1.5rem;
+    border-bottom-right-radius: 1.5rem;
+    font-size: var(--font-size-3xl);
+}
+
+.user-greeting-card span {
+    color: #FFD700;
+    font-weight: var(--font-weight-6);
+}
+
+@media (min-width: 1024px) {
+    .user-greeting-card {
+        justify-content: flex-start;
+        padding-left: 4rem;
+        font-size: var(--font-size-6xl);
+        margin-left: 240px;
+    }
+}

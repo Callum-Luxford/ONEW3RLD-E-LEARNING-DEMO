@@ -1,18 +1,53 @@
-<h2>Welcome, <%= user.fullName %>!</h2>
+<section class="user-greeting-card">
+    <p>Welcome <span>
+            <%= user.fullName || user.email %>,
+        </span></p>
+</section>
 
-<h3>Your Courses</h3>
+<main class="dashboard-main">
+    <!-- <h1 class="dashboard-greeting">
+        Courses
+    </h1> -->
 
-<% if (courses.length> 0) { %>
-    <ul>
-        <% courses.forEach(course=> { %>
-            <li>
-                <strong>
-                    <%= course.title %>
-                </strong><br />
-                <a href="/courses/<%= course._id %>">View Course</a>
-            </li>
-            <% }) %>
-    </ul>
-    <% } else { %>
-        <p>You are not enrolled in any courses.</p>
-        <% } %>
+    <% if (userCourses.length> 0) { %>
+        <section class="course-grid">
+            <% userCourses.forEach(course=> { %>
+                <div class="course-card">
+                    <div class="course-card-btn">
+                        <span class="course-badge"><img src="/icons/layer.png" alt=""> Course</span>
+
+                        <a href="/courses/<%= course._id %>" class="arrow-btn">
+                            <img src="/icons/arrow-right.png" alt="View Course">
+                        </a>
+                    </div>
+
+                    <h2>
+                        <%= course.title %>
+                    </h2>
+
+                    <h4>
+                        <%= course.subtitle %>
+                    </h4>
+
+                    <p class="course-subtitle">
+                        <img class="card-info-icon" src="/icons/info.png" alt="">
+                        <%= course.summary %>
+                    </p>
+
+                    <div class="course-progress">
+                        <div class="progress-bar">
+                            <div class="progress-fill" data-progress="<%= course.progressPercent %>"></div>
+                        </div>
+
+                        <span class="progress-text">
+                            Completed: <%= course.completedLessons %> / <%= course.totalLessons %>
+                        </span>
+                    </div>
+
+                </div>
+                <% }) %>
+        </section>
+        <% } else { %>
+            <p>No courses enrolled yet.</p>
+            <% } %>
+</main>

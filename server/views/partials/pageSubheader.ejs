@@ -1,0 +1,14 @@
+<section class="user-greeting-card">
+    <% if (pageTitle) { %>
+        <p>
+            <%= preTitleText %> <span>
+                    <%= pageTitle %>
+                </span>
+        </p>
+        <% } else { %>
+            <p>Welcome<span>
+                    <%= user.fullName || user.email %>
+                </span>
+            </p>,
+            <% } %>
+</section>
