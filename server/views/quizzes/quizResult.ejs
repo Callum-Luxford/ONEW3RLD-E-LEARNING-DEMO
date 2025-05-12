@@ -1,16 +1,18 @@
-<h2>Module 1 Quiz Result</h2>
+<main class="with-sidebar">
+    <h2>Module 1 Quiz Result</h2>
 
-<p><strong>Your Score:</strong>
-    <%= score %> / <%= total %>
-</p>
+    <p><strong>Your Score:</strong>
+        <%= score %> / <%= total %>
+    </p>
 
-<% if (score < total) { %>
-    <p>You did not pass the quiz.</p>
+    <% if (score < total) { %>
+        <p>You did not pass the quiz.</p>
 
-    <form method="GET" action="/courses/<%= course._id %>/modules/<%= module.id %>/lessons/<%= lesson.id %>/quiz">
-        <input type="hidden" name="q" value="0">
-        <button type="submit">Retake Module 1 Quiz</button>
-    </form>
-    <% } else { %>
-        <p>Congratulations! You passed! You’ll now receive your certificate.</p>
-        <% } %>
+        <form method="GET" action="/courses/<%= course._id %>/modules/<%= module.id %>/lessons/<%= lesson.id %>/quiz">
+            <input type="hidden" name="q" value="0">
+            <button type="submit">Retake Module 1 Quiz</button>
+        </form>
+        <% } else { %>
+            <p>Congratulations! You passed! You’ll now receive your certificate.</p>
+            <% } %>
+</main>
