@@ -1,20 +1,12 @@
 <main class="with-sidebar">
-
-    <div class="course-layout" style="display: flex;">
-
-        <div class="course-content" style="flex: 1; padding: 20px;">
-
-            <% if (currentLesson) { %>
-                <%- include('lesson', { lesson: currentLesson }) %>
-                    <% } else { %>
-                        <h2>
-                            <%= course.title %>
-                        </h2>
-                        <p>
-                            <%= course.description %>
-                        </p>
-                        <p>Select a lesson from the sidebar to begin.</p>
-                        <% } %>
-        </div>
-    </div>
+    <% if (currentLesson) { %>
+        <%- include('lesson', { lesson: currentLesson }) %>
+            <% } else { %>
+                <section class="lesson-wrapper">
+                    <h2 class="lesson-title">
+                        <%= course.title %>
+                    </h2>
+                    <p class="lesson-intro">Select a lesson from the sidebar to begin.</p>
+                </section>
+                <% } %>
 </main>

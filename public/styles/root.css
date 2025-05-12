@@ -1,5 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
 /* ROOT STYLES */
 :root {
+
+    --font-family-base: 'Montserrat', sans-serif;
 
     /* ----------- Fixed Font sizes ------------ */
     /* ----------- Fixed Font sizes ------------ */
@@ -141,11 +145,15 @@
     box-sizing: border-box;
 }
 
+html, body {
+    font-family: var(--font-family-base);
+}
+
 body {
     margin: 0;
     padding: 0;
     width: 100%;
     height: 100%;
     box-sizing: border-box;
-    font-family: 'Arial', sans-serif;
+    font-family: 'Montserrat', sans-serif;
 }

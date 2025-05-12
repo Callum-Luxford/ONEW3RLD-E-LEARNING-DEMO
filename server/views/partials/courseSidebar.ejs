@@ -1,57 +1,45 @@
 <div id="courseSidebar" class="course-sidebar-overlay">
     <div class="course-sidebar">
+        <h2>
+            <%= course.title %>
+        </h2>
+
         <% const userProgress=user?.progress?.find(p=> p.course.toString() === course._id.toString()) || {
-            completedLessons: []
-            };
-            const completed = userProgress.completedLessons || [];
-            const flatLessons = course.modules.flatMap(m => m.lessons);
+            completedLessons: [] }; %>
+            <% const completed=userProgress.completedLessons || []; %>
 
-            const quizLessons = flatLessons.filter(l =>
-            l.quiz && Array.isArray(l.quiz.questions) && l.quiz.questions.length > 0
-            );
+                <% course.modules.forEach((module, moduleIndex)=> { %>
+                    <div class="module-block">
+                        <h4>
+                            <%= module.title %>
+                        </h4>
+                        <ul>
+                            <% module.lessons.forEach((lesson, index)=> {
+                                const lessonNumber = `${moduleIndex + 1}.${index + 1}`;
+                                const isCompleted = completed.includes(lesson.id);
 
-            const completedQuizzes = quizLessons.filter(q => completed.includes(q.id));
-            %>
+                                %>
+                                <li>
+                                    <div class="lesson-link-wrap"
+                                        style="display: flex; justify-content: space-between; align-items: center;">
+                                        <a
+                                            href="/courses/<%= course._id %>/modules/<%= module.id %>/lessons/<%= lesson.id %>">
+                                            <%= lessonNumber %> - <%= lesson.title %>
+                                        </a>
+                                        <span class="lesson-icon">
+                                            <% if (isCompleted) { %>
+                                                ✅
+                                                <% } else { %>
+                                                    🔒
+                                                    <% } %>
+                                        </span>
+                                    </div>
+                                </li>
 
-            <div class="sidebar-container">
-                <aside class="sidebar">
-                    <h3>
-                        <%= course.title %>
-                    </h3>
-                    <p><strong>Progress:</strong> Complete <%= completedQuizzes.length %> / <%= quizLessons.length %>
-                    </p>
+                                <% }); %>
+                        </ul>
 
-                    <% course.modules.forEach((module)=> { %>
-                        <div class="module-block" style="margin-bottom: 20px;">
-                            <h4>
-                                <%= module.title %>
-                            </h4>
-                            <ul style="list-style: none; padding-left: 10px;">
-                                <% module.lessons.forEach((lesson)=> {
-                                    const flatIndex = flatLessons.findIndex(l => l.id === lesson.id);
-                                    const prevId = flatLessons[flatIndex - 1]?.id;
-                                    const isCompleted = completed.includes(lesson.id);
-                                    const isUnlocked =
-                                    lesson.id === "intro-1" ||
-                                    (flatIndex === 0 ? completed.includes("intro-1") : completed.includes(prevId));
-                                    const isCurrent = currentLesson && currentLesson.id === lesson.id;
-                                    %>
-                                    <li style="margin-bottom: 5px;">
-                                        <% if (isUnlocked) { %>
-                                            <a href="/courses/<%= course._id %>/modules/<%= module.id %>/lessons/<%= lesson.id %>"
-                                                style="font-weight: <%= isCurrent ? 'bold' : 'normal' %>; color: <%= isCurrent ? '#000' : '#2a2a2a' %>;">
-                                                <%= isCompleted ? '✅' : '🔓' %>
-                                                    <%= lesson.title %>
-                                            </a>
-                                            <% } else { %>
-                                                <span style="color: #aaa;">🔒 <%= lesson.title %></span>
-                                                <% } %>
-                                    </li>
-                                    <% }) %>
-                            </ul>
-                        </div>
-                        <% }) %>
-                </aside>
-            </div>
+                    </div>
+                    <% }); %>
     </div>
 </div>

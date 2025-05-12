@@ -19,6 +19,10 @@ const courseSchema = new mongoose.Schema({
     {
       id: String,
       title: String,
+      isDemoOnly: {
+        type: Boolean,
+        default: false,
+      },
       lessons: [
         {
           id: String,

@@ -1,0 +1,29 @@
+/* Quiz-specific overrides */
+.quiz-mode .lesson-wrapper {
+    padding: 2rem;
+    background: #f9f9f9;
+    border-radius: 12px;
+}
+
+.quiz-mode h2,
+.quiz-mode h3 {
+    margin-bottom: 1rem;
+    font-size: 1.4rem;
+    color: #111;
+}
+
+.quiz-mode .question-block {
+    margin-bottom: 2rem;
+}
+
+.quiz-mode .next-btn,
+.quiz-mode button[type="submit"] {
+    display: inline-block;
+    margin-top: 1rem;
+    background-color: #ffc107;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+}

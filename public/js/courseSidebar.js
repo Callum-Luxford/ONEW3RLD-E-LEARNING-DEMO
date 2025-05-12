@@ -23,15 +23,9 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   // Click anywhere outside sidebar (even inside overlay) to close
-  document.addEventListener("click", (e) => {
-    const isClickInsideSidebar = sidebar.contains(e.target);
-    const isClickOnToggle = toggleBtn.contains(e.target);
-
-    if (
-      !isClickInsideSidebar &&
-      !isClickOnToggle &&
-      sidebar.classList.contains("open")
-    ) {
+  // Close when clicking anywhere on the overlay (including its children)
+  overlay.addEventListener("click", (e) => {
+    if (sidebar.classList.contains("open")) {
       sidebar.classList.remove("open");
       overlay.classList.remove("open");
       toggleBtn.classList.remove("active");
@@ -52,3 +46,5 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 });
+
+

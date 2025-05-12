@@ -7,10 +7,19 @@ exports.getDashboard = async (req, res) => {
   try {
     const user = await User.findById(req.user._id).populate("enrolledCourses");
 
+    console.log("User Progress:", user.progress);
+
     const completedLessons = user.progress?.completedLessons || [];
 
     const coursesWithProgress = user.enrolledCourses.map((course) => {
       const progress = getCourseProgress(course, user.progress);
+
+      console.log("📊 Calculated Progress:", {
+        courseTitle: course.title,
+        totalLessons: progress.totalLessons,
+        completedLessons: progress.completedLessons,
+        percent: progress.progressPercent,
+      });
 
       return {
         ...course.toObject(),

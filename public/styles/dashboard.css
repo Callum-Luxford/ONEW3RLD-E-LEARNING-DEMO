@@ -1,6 +1,5 @@
 body {
     background: var(--theme-clr-5);
-    font-family: 'Arial', sans-serif;
     color: var(--theme-clr-1);
     margin: 0;
 }
@@ -123,14 +122,4 @@ body {
     color: var(--font-clr-5);
     font-weight: var(--font-weight-6);
     text-align: right;
-}
-
-/* === Adjust main layout for desktop sidebar === */
-@media (min-width: 1024px) {
-
-    .dashboard-main,
-    .user-greeting-card {
-        margin-left: 240px;
-        /* match sidebar width */
-    }
 }

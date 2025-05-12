@@ -1,0 +1,116 @@
+/* === Lesson Page Container === */
+.lesson-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 0rem;
+}
+
+.lesson-title {
+    font-weight: var(--font-weight-7);
+    font-size: var(--font-size-2xl);
+    margin-top: 0;
+}
+
+/* === Lesson Header === */
+
+/* === Lesson Video === */
+.lesson-video {
+    margin: 1rem 0;
+}
+
+.lesson-video video {
+    width: 100%;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+}
+
+/* === Lesson Content === */
+.lesson-content {
+    background: var(--theme-clr-3);
+    border-radius: 5px;
+    box-shadow: var(--shadow-sm);
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+
+.lesson-content p,
+.lesson-content li {
+    font-size: var(--font-size-lg);
+    color: var(--font-clr-2);
+    font-weight: var(--font-weight-6);
+    line-height: 1.3rem;
+}
+
+.lesson-content ol,
+.lesson-content ul {
+    padding-left: 2rem;
+}
+
+/* === Lesson Complete Buttons === */
+.lesson-submit-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-6);
+    border-radius: var(--border-radius-1);
+    cursor: pointer;
+    background-color: var(--theme-clr-1);
+    color: var(--font-clr-1);
+    width: 100%;
+    margin-top: 2rem;
+}
+
+/* === Call to Action Buttons === */
+.lesson-actions {
+    margin-top: 2rem;
+    text-align: center;
+}
+
+.lesson-actions form {
+    display: inline-block;
+}
+
+.lesson-actions button {
+    background: #000;
+    color: #fff;
+    border: none;
+    padding: 12px 24px;
+    font-size: 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.2s ease-in-out;
+}
+
+.lesson-actions button:hover {
+    background: #222;
+}
+
+/* === Quiz Info Box === */
+.quiz-info {
+    background: #fff7cc;
+    border-left: 4px solid #ffc107;
+    padding: 16px;
+    border-radius: 10px;
+    margin-top: 1.5rem;
+    text-align: center;
+}
+
+.quiz-info p {
+    margin: 0.3rem 0;
+}
+
+/* === Completion Text === */
+.lesson-complete-message {
+    font-weight: 600;
+    color: #155724;
+    background-color: #d4edda;
+    padding: 1rem;
+    border-radius: 8px;
+    margin-top: 1.5rem;
+    text-align: center;
+}
+
+/* === Responsive === */

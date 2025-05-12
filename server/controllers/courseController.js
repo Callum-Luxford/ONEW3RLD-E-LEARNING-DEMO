@@ -1,14 +1,27 @@
 // Modules
 const Course = require("../models/Course");
 const User = require("../models/User");
+const { getNextIncompleteLesson } = require("../utils/courseProgressHelpers");
 
 // viewCourse request: - render courses
 exports.viewCourse = async (req, res) => {
   try {
     const course = await Course.findById(req.params.courseId);
-    const user = await User.findById(req.user._id);
-
     if (!course) return res.status(404).send("Course not found");
+
+    const user = await User.findById(req.user._id);
+    const progress = user?.progress?.find(
+      (p) => p.course.toString() === course._id.toString()
+    );
+    const completed = progress?.completedLessons || [];
+
+    const nextLesson = getNextIncompleteLesson(course, completed);
+
+    if (nextLesson) {
+      return res.redirect(
+        `/courses/${course._id}/modules/${nextLesson.moduleId}/lessons/${nextLesson.lessonId}`
+      );
+    }
 
     res.render("courses/index", {
       title: course.title,
@@ -17,7 +30,7 @@ exports.viewCourse = async (req, res) => {
       user,
       preTitleText: "Course:",
       pageTitle: course.title,
-      pageStyles: ["courseView.css", "sidebar.css", "pageSubheader.css"],
+      pageStyles: ["lessonView.css", "sidebar.css", "pageSubheader.css"],
       pageScripts: ["courseSidebar.js"],
       showSidebarToggle: true,
     });
@@ -26,6 +39,8 @@ exports.viewCourse = async (req, res) => {
     res.status(500).send("Error loading course");
   }
 };
+
+
 
 // ViewLesson - render lesson
 exports.viewLesson = async (req, res) => {
@@ -70,10 +85,11 @@ exports.viewLesson = async (req, res) => {
       title: `${course.title} - ${lesson.title}`,
       pageTitle: lesson.title,
       course,
+      moduleId: module.id,
       currentLesson: lesson,
       isCompleted,
       user,
-      pageStyles: ["courseView.css", "sidebar.css"],
+      pageStyles: ["lessonView.css", "sidebar.css"],
       pageScripts: ["courseSidebar.js"],
       showSidebarToggle: true,
     });

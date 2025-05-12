@@ -38,3 +38,78 @@
         display: none !important;
     }
 }
+
+/* Updated sidebar styling to match reference UI */
+.course-sidebar {
+    width: 100%;
+    max-width: 480px;
+    margin: 0 auto;
+    border-radius: 0;
+    padding: 1rem 1.5rem;
+}
+.sidebar h3 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #ffc107;
+    margin-bottom: 1rem;
+}
+
+.sidebar p {
+    font-size: 0.875rem;
+    margin-bottom: 1rem;
+}
+
+.module-block {
+    margin-bottom: 2rem;
+}
+
+.module-block h4 {
+    font-size: 0.95rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: #fff;
+}
+
+.module-block li a {
+    display: block;
+    padding: 0.25rem 0;
+    font-size: 0.9rem;
+    text-decoration: none;
+    color: #ccc;
+}
+
+.module-block li a:hover,
+.module-block li a:focus {
+    color: #fff;
+}
+
+.module-block li a[style*="font-weight: bold"] {
+    color: #fff !important;
+}
+
+.module-block li span {
+    display: block;
+    padding: 0.25rem 0;
+    font-size: 0.9rem;
+    color: #777;
+}
+
+.lesson-link-wrap {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.lesson-link-wrap a {
+    color: #fff;
+    text-decoration: none;
+    flex: 1;
+}
+
+.lesson-icon {
+    font-size: 1rem;
+}
+.lesson-icon img {
+    filter: var(--icon-clr-1);
+}

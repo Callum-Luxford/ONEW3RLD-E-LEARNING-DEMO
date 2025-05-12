@@ -3,7 +3,7 @@
     .with-sidebar {
         margin-left: 240px;
         /* width of the sidebar */
-        padding: 2rem;
+        padding: 2rem 1rem;
     }
 }
 

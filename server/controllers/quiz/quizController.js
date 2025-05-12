@@ -25,14 +25,20 @@ exports.renderQuiz = async (req, res) => {
     if (!currentQuestion) return res.status(404).send("Question not found.");
 
     res.render("quizzes/quiz", {
-      title: lesson.title,
+      title: `${course.title} - ${lesson.title}`,
+      pageTitle: lesson.title,
       course,
       module: course.modules.find((mod) => mod.id === moduleId),
       lesson,
+      currentLesson: lesson,
       question: currentQuestion,
       questionIndex,
       totalQuestions: questions.length,
       userAnswers: req.session.userAnswers,
+      user: req.user, // needed for subheader/sidebar
+      pageStyles: ["quiz.css", "sidebar.css"], // includes sidebar style
+      pageScripts: ["courseSidebar.js"],
+      showSidebarToggle: true, // needed for sidebar toggle
     });
   } catch (err) {
     console.error("Quiz load error:", err);
@@ -71,24 +77,37 @@ exports.submitQuiz = async (req, res) => {
 
     if (passed) {
       const user = await User.findById(req.user._id);
-      const progress = user.progress.find((p) => p.course.equals(courseId));
+      let progress = user.progress.find((p) => p.course.equals(courseId));
 
-      if (progress && !progress.completedLessons.includes(lessonId)) {
-        progress.completedLessons.push(lessonId);
-        await user.save();
+      if (progress) {
+        if (!progress.completedLessons.includes(lessonId)) {
+          progress.completedLessons.push(lessonId);
+        }
+      } else {
+        user.progress.push({
+          course: courseId,
+          completedLessons: [lessonId],
+        });
       }
 
-      return res.redirect(`/courses/${courseId}/success`);
+      await user.save();
 
+      return res.redirect(`/courses/${courseId}/success`);
     }
 
     return res.render("quizzes/quizResult", {
       course,
       module,
       lesson,
+      currentLesson: lesson,
+      user: req.user, // sidebar and subheader
       score,
       total: questions.length,
       title: "Quiz Failed",
+      pageTitle: "Quiz Result",
+      pageStyles: ["quiz.css", "sidebar.css"],
+      pageScripts: ["courseSidebar.js"],
+      showSidebarToggle: true,
     });
   } catch (err) {
     console.error("Quiz submission failed:", err);

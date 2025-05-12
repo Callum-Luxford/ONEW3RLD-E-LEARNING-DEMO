@@ -25,11 +25,14 @@ exports.renderSuccessPage = async (req, res) => {
       progress && progress.completedLessons.includes("1-1-quiz");
 
     res.render("quizzes/success", {
-      title: "Course Completed",
+      title: "Course Complete",
       course,
       user,
-      successText:
-        course.successText || "Congratulations on completing this course!",
+      pageTitle: "Course Completed",
+      showSidebarToggle: true,
+      currentLesson: null, // optional depending on your sidebar logic
+      pageStyles: ["sidebar.css", "quiz.css"],
+      pageScripts: ["courseSidebar.js"],
       hasCompletedCourse,
     });
   } catch (err) {
