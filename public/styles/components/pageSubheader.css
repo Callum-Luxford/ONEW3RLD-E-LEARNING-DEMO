@@ -1,17 +1,50 @@
 .user-greeting-card {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    position: fixed;
+    top: var(--header-height);
+    left: 0;
+    right: 0;
+    height: var(--subheader-height);
     background-color: var(--theme-clr-1);
     color: var(--theme-clr-5);
+    z-index: 999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     border-bottom-left-radius: 1.5rem;
     border-bottom-right-radius: 1.5rem;
-    font-size: var(--font-size-3xl);
+    padding-inline: 20px;
+    overflow: hidden;
 }
 
 .user-greeting-card span {
     color: #FFD700;
     font-weight: var(--font-weight-6);
+}
+
+.user-greeting-card p {
+    margin: 0;
+    font-size: var(--font-size-3xl);
+    font-weight: bold;
+    white-space: wrap;
+    padding-inline-start: .4rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    flex: 1;
+}
+
+.sidebar-toggle-btn {
+    background: transparent;
+    border: none;
+    padding: 0.5rem;
+    cursor: pointer;
+    position: relative;
+}
+
+.sidebar-toggle-btn img {
+    width: 28px;
+    height: 28px;
+    filter: brightness(0) saturate(100%) invert(1);
+    /* for white icon */
 }
 
 @media (min-width: 1024px) {

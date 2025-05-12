@@ -1,0 +1,38 @@
+.course-sidebar-overlay {
+    position: fixed;
+    top: calc(var(--header-height) + var(--subheader-height));
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 900;
+    background: rgba(0, 0, 0, 0.6);
+    display: none;
+}
+
+.course-sidebar-overlay.open {
+    display: block;
+}
+
+.course-sidebar {
+    position: fixed;
+    top: calc(var(--header-height) + var(--subheader-height));
+    left: 0;
+    height: calc(100% - (var(--header-height) + var(--subheader-height)));
+    width: 100%;
+    max-width: 300px;
+    background: white;
+    z-index: 901;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+}
+
+.course-sidebar.open {
+    transform: translateX(0);
+}
+
+/* HIDE OVERLAY COMPLETELY ABOVE 1024px */
+@media (min-width: 1024px) {
+    .course-sidebar-overlay {
+        display: none !important;
+    }
+}

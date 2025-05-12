@@ -9,6 +9,8 @@ exports.getRegister = (req, res) => {
   res.render("auth/register", {
     title: "Register",
     hideNavbar: true,
+    hideSubheader: true,
+    noWrapper: true,
     pageStyles: ["auth.css"],
   });
 };
@@ -44,6 +46,8 @@ exports.getLogin = (req, res) => {
   res.render("auth/login", {
     title: "Login",
     hideNavbar: true,
+    hideSubheader: true,
+    noWrapper: true,
     pageStyles: ["auth.css"],
   });
 };

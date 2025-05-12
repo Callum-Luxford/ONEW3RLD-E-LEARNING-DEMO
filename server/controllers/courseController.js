@@ -17,6 +17,9 @@ exports.viewCourse = async (req, res) => {
       user,
       // preTitleText: ``,
       // pageTitle: ``,
+      pageStyles: ["courseView.css", "sidebar.css", "pageSubheader.css"],
+      pageScripts: ["courseSidebar.js"],
+      showSidebarToggle: true,
     });
   } catch (error) {
     console.error(error);
@@ -69,6 +72,9 @@ exports.viewLesson = async (req, res) => {
       currentLesson: lesson,
       isCompleted,
       user,
+      pageStyles: ["courseView.css", "sidebar.css"],
+      pageScripts: ["courseSidebar.js"],
+      showSidebarToggle: true,
     });
   } catch (error) {
     console.error(error);

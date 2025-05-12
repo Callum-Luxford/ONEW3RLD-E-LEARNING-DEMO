@@ -4,6 +4,13 @@
     padding: 20px;
     position: relative;
     z-index: 10000;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: var(--header-height);
+    background: #000;
 }
 
 .header-group {

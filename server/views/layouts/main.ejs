@@ -26,19 +26,35 @@
         <%- include('../partials/navbar.ejs') %>
             <% } %>
 
-        <%- body %>
+                <% if (typeof hideSubheader==='undefined' || !hideSubheader) { %>
+                    <%- include('../partials/pageSubheader', { pageTitle: typeof pageTitle !=='undefined' ? pageTitle :
+                        null, showSidebarToggle: typeof showSidebarToggle !=='undefined' ? showSidebarToggle : false,
+                        user: typeof user !=='undefined' ? user : null, course: typeof course !=='undefined' ? course :
+                        null, currentLesson: typeof currentLesson !=='undefined' ? currentLesson : null }) %>
+                        <% } %>
 
-        
-        <!-- GLOBAL SCRIPTS (always loaded) -->
-        <script src="/js/quiz-ui.js" defer></script>
-        <script src="/js/navbar.js" defer></script>
 
-        <!-- PAGE-SPECIFIC SCRIPTS -->
-        <% if (typeof pageScripts !=='undefined' ) { %>
-            <% pageScripts.forEach(script=> { %>
-                <script src="/js/<%= script %>" defer></script>
-                <% }) %>
-                    <% } %>
+                            <% if (typeof noWrapper !=='undefined' && noWrapper) { %>
+                                <%- body %>
+                                    <% } else { %>
+                                        <div class="page-wrapper">
+                                            <%- body %>
+                                        </div>
+                                        <% } %>
+
+
+                                            <!-- GLOBAL SCRIPTS (always loaded) -->
+                                            <script src="/js/quiz-ui.js" defer></script>
+                                            <script src="/js/navbar.js" defer></script>
+                                            <!-- <script src="/js/courseSidebar.js" defer></script> -->
+
+                                            <!-- PAGE-SPECIFIC SCRIPTS -->
+                                            <% if (typeof pageScripts !=='undefined' ) { %>
+                                                <% pageScripts.forEach(script=> { %>
+                                                    <script src="/js/<%= script %>" defer></script>
+                                                    <% }) %>
+                                                        <% } %>
 </body>
+
 
 </html>
