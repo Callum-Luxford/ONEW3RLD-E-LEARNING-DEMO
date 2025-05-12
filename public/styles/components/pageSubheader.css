@@ -14,6 +14,7 @@
     border-bottom-right-radius: 1.5rem;
     padding-inline: 20px;
     overflow: hidden;
+    transition: border-bottom-left-radius, border-bottom-right-radius 0.3s ease-in-out;
 }
 
 .user-greeting-card span {
@@ -47,6 +48,10 @@
     /* for white icon */
 }
 
+.sidebar-toggle-btn.active img {
+    filter: var(--icon-clr-2)
+}
+
 @media (min-width: 1024px) {
     .user-greeting-card {
         justify-content: flex-start;
@@ -54,4 +59,13 @@
         font-size: var(--font-size-6xl);
         margin-left: 240px;
     }
+}
+
+/* Remove border-radius when sidebar is open */
+body.sidebar-open section.user-greeting-card {
+    border-bottom-left-radius: 0 !important;
+    border-bottom-right-radius: 0 !important;
+    background-color: #000 !important;
+    overflow: hidden;
+    transition: border-bottom-left-radius, border-bottom-right-radius 0.3s ease-in-out;
 }

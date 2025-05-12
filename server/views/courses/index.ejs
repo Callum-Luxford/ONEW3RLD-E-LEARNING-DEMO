@@ -1,25 +1,20 @@
-<%- include('../partials/pageSubheader.ejs', { pageTitle: currentLesson ? currentLesson.title : course.title,
-    preTitleText: currentLesson ? "Now viewing:" : "Course:" , showSidebarToggle: true, user })%>
+<main class="with-sidebar">
 
-    <%- include('../partials/courseSidebar', { course, currentLesson, user }) %>
+    <div class="course-layout" style="display: flex;">
 
-        <main class="with-sidebar">
+        <div class="course-content" style="flex: 1; padding: 20px;">
 
-            <div class="course-layout" style="display: flex;">
-
-                <div class="course-content" style="flex: 1; padding: 20px;">
-
-                    <% if (currentLesson) { %>
-                        <%- include('lesson', { lesson: currentLesson }) %>
-                            <% } else { %>
-                                <h2>
-                                    <%= course.title %>
-                                </h2>
-                                <p>
-                                    <%= course.description %>
-                                </p>
-                                <p>Select a lesson from the sidebar to begin.</p>
-                                <% } %>
-                </div>
-            </div>
-        </main>
+            <% if (currentLesson) { %>
+                <%- include('lesson', { lesson: currentLesson }) %>
+                    <% } else { %>
+                        <h2>
+                            <%= course.title %>
+                        </h2>
+                        <p>
+                            <%= course.description %>
+                        </p>
+                        <p>Select a lesson from the sidebar to begin.</p>
+                        <% } %>
+        </div>
+    </div>
+</main>

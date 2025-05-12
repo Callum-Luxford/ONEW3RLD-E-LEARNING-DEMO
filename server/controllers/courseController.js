@@ -15,8 +15,8 @@ exports.viewCourse = async (req, res) => {
       course,
       currentLesson: null,
       user,
-      // preTitleText: ``,
-      // pageTitle: ``,
+      preTitleText: "Course:",
+      pageTitle: course.title,
       pageStyles: ["courseView.css", "sidebar.css", "pageSubheader.css"],
       pageScripts: ["courseSidebar.js"],
       showSidebarToggle: true,
@@ -68,6 +68,7 @@ exports.viewLesson = async (req, res) => {
 
     res.render("courses/index", {
       title: `${course.title} - ${lesson.title}`,
+      pageTitle: lesson.title,
       course,
       currentLesson: lesson,
       isCompleted,

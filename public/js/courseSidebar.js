@@ -3,35 +3,52 @@ document.addEventListener("DOMContentLoaded", () => {
   const overlay = document.querySelector(".course-sidebar-overlay");
   const sidebar = document.querySelector(".course-sidebar");
 
-  function closeSidebar() {
-    overlay.classList.remove("open");
-    sidebar.classList.remove("open");
-  }
+  if (!toggleBtn || !overlay || !sidebar) return;
 
-  function openSidebar() {
-    overlay.classList.add("open");
-    sidebar.classList.add("open");
-  }
+  // Toggle sidebar open/close
+  toggleBtn.addEventListener("click", () => {
+    const isOpen = sidebar.classList.contains("open");
 
-  if (toggleBtn && overlay && sidebar) {
-    toggleBtn.addEventListener("click", () => {
-      if (sidebar.classList.contains("open")) {
-        closeSidebar();
-      } else {
-        openSidebar();
-      }
+    if (isOpen) {
+      sidebar.classList.remove("open");
+      overlay.classList.remove("open");
+      toggleBtn.classList.remove("active");
+      document.body.classList.remove("sidebar-open");
+    } else {
+      sidebar.classList.add("open");
+      overlay.classList.add("open");
+      toggleBtn.classList.add("active");
+      document.body.classList.add("sidebar-open");
+    }
+  });
+
+  // Click anywhere outside sidebar (even inside overlay) to close
+  document.addEventListener("click", (e) => {
+    const isClickInsideSidebar = sidebar.contains(e.target);
+    const isClickOnToggle = toggleBtn.contains(e.target);
+
+    if (
+      !isClickInsideSidebar &&
+      !isClickOnToggle &&
+      sidebar.classList.contains("open")
+    ) {
+      sidebar.classList.remove("open");
+      overlay.classList.remove("open");
+      toggleBtn.classList.remove("active");
+      document.body.classList.remove("sidebar-open");
+    }
+  });
+
+  // Close when clicking a link
+  sidebar.querySelectorAll("a").forEach((link) => {
+    link.addEventListener("click", () => {
+      sidebar.classList.remove("open");
+      overlay.classList.remove("open");
+      toggleBtn.classList.remove("active");
+
+      setTimeout(() => {
+        document.body.classList.remove("sidebar-open");
+      }, 300); // matches your CSS transition duration
     });
-
-    overlay.addEventListener("click", (e) => {
-      if (!sidebar.contains(e.target)) {
-        closeSidebar();
-      }
-    });
-
-    sidebar.querySelectorAll("a").forEach((link) => {
-      link.addEventListener("click", () => {
-        closeSidebar();
-      });
-    });
-  }
+  });
 });
