@@ -14,6 +14,10 @@ exports.getDashboard = async (req, res) => {
     const coursesWithProgress = user.enrolledCourses.map((course) => {
       const progress = getCourseProgress(course, user.progress);
 
+      const hasCertificate = user.certificates?.some(
+        (cert) => cert.courseId.toString() === course._id.toString()
+      );
+
       console.log("📊 Calculated Progress:", {
         courseTitle: course.title,
         totalLessons: progress.totalLessons,
@@ -24,6 +28,7 @@ exports.getDashboard = async (req, res) => {
       return {
         ...course.toObject(),
         ...progress,
+        hasCertificate,
       };
     });
 

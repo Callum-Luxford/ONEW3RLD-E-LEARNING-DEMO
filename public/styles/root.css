@@ -134,6 +134,7 @@
     --icon-clr-1: invert(100%) sepia(100%) saturate(0%) hue-rotate(288deg) brightness(102%) contrast(102%);
     --icon-clr-2: invert(72%) sepia(84%) saturate(998%) hue-rotate(360deg) brightness(105%) contrast(102%);
     --icon-clr-3: invert(67%) sepia(4%) saturate(0%) hue-rotate(178deg) brightness(95%) contrast(90%);
+    --icon-clr-4: invert(100%) sepia(0%) saturate(7499%) hue-rotate(332deg) brightness(103%) contrast(100%);;
 
     --header-height: 60px;
     --subheader-height: 120px;

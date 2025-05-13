@@ -49,21 +49,11 @@ exports.getNextIncompleteLesson = (course, completedLessonIds = []) => {
 };
 
 exports.attachCourseProgress = (course, user) => {
-  const allLessons = course.modules.flatMap((mod) => mod.lessons);
-  const totalLessons = allLessons.length;
+  const courseProgress = exports.getCourseProgress(course, user.progress);
 
-  const userProgress = user.progress.find(
-    (p) => p.course.toString() === course._id.toString()
-  );
-  const completedLessons = userProgress?.completedLessons || [];
-
-  const progressPercent = Math.round(
-    (completedLessons.length / totalLessons) * 100
-  );
-
-  course.totalLessons = totalLessons;
-  course.completedLessons = completedLessons.length;
-  course.progressPercent = progressPercent;
+  course.totalLessons = courseProgress.totalLessons;
+  course.completedLessons = courseProgress.completedLessons;
+  course.progressPercent = courseProgress.progressPercent;
 
   return course; // in case want to use it inline
 };

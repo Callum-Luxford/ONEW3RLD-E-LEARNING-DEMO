@@ -4,13 +4,25 @@
         <section class="course-grid">
             <% userCourses.forEach(course=> { %>
                 <div class="course-card">
-                    <div class="course-card-btn">
-                        <span class="course-badge"><img src="/icons/layer.png" alt=""> Course</span>
+                    <div class="course-card-icons">
+                        <span class="course-badge">
+                            <img src="/icons/layer.png" alt=""> Course
+                        </span>
 
-                        <a href="/courses/<%= course._id %>" class="arrow-btn">
-                            <img src="/icons/arrow-right.png" alt="View Course">
-                        </a>
+                        <div class="course-card-btns">
+                            <% if (course.hasCertificate) { %>
+                                <a href="/certificate/<%= course._id %>/download" class="download-btn"
+                                    title="Download Certificate">
+                                    <img src="/icons/download.png" alt="Download Certificate" />
+                                </a>
+                                <% } %>
+
+                                    <a href="/courses/<%= course._id %>" class="arrow-btn">
+                                        <img src="/icons/right-arrow.png" alt="View Course">
+                                    </a>
+                        </div>
                     </div>
+
 
                     <h2>
                         <%= course.title %>
@@ -34,6 +46,8 @@
                             Completed: <%= course.completedLessons %> / <%= course.totalLessons %>
                         </span>
                     </div>
+
+                    <a href="/courses/<%= course._id %>" class="course-card-link" aria-label="View course"></a>
 
                 </div>
                 <% }) %>

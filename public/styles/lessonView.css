@@ -11,17 +11,45 @@
     margin-top: 0;
 }
 
-/* === Lesson Header === */
-
 /* === Lesson Video === */
 .lesson-video {
-    margin: 1rem 0;
+    position: relative;
+    max-width: 100%;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 1rem;
 }
 
 .lesson-video video {
     width: 100%;
-    border-radius: 10px;
-    border: 1px solid #ccc;
+    display: block;
+    z-index: 1;
+    position: relative;
+}
+
+.video-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.555);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+}
+
+.video-overlay img {
+    width: 60px;
+    height: 60px;
+    filter: var(--icon-clr-1);
+}
+
+.video-overlay.hidden {
+    opacity: 0;
+    pointer-events: none;
+    z-index: -1;
+    /* ully remove it from visual stacking */
 }
 
 /* === Lesson Content === */
@@ -98,8 +126,14 @@
     cursor: pointer;
     background-color: var(--theme-clr-1);
     color: var(--font-clr-1);
-    max-width: 400px;
+    max-width: 300px;
     width: 100%;
+}
+
+@media (min-width: 1200px) {
+    .lesson-quiz-button {
+        max-width: 400px;
+    }
 }
 
 .quiz-intro-title {

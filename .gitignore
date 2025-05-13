@@ -21,3 +21,5 @@ yarn-error.log*
 
 # PM2 logs
 logs/
+
+public/videos/*.mp4

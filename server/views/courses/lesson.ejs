@@ -15,9 +15,13 @@
 
         <% if (lesson.videoUrl) { %>
             <div class="lesson-video">
-                <video src="<%= lesson.videoUrl %>" controls style="max-width: 100%;"></video>
+                <video id="lessonVideo" src="<%= lesson.videoUrl %>" preload="metadata"></video>
+                <div class="video-overlay" id="videoOverlay">
+                    <img src="/icons/play-button-arrow.png" alt="Play" />
+                </div>
             </div>
             <% } %>
+
 
                 <% if (!hasQuiz) { %>
                     <!-- Show lesson content only if it’s not a quiz -->

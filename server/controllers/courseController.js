@@ -36,7 +36,7 @@ exports.viewCourse = async (req, res) => {
       preTitleText: "Course:",
       pageTitle: course.title,
       pageStyles: ["lessonView.css", "sidebar.css", "pageSubheader.css"],
-      pageScripts: ["courseSidebar.js"],
+      pageScripts: ["courseSidebar.js", "lesson.js"],
       showSidebarToggle: true,
     });
   } catch (error) {
@@ -95,7 +95,7 @@ exports.viewLesson = async (req, res) => {
       isCompleted,
       user,
       pageStyles: ["lessonView.css", "sidebar.css"],
-      pageScripts: ["courseSidebar.js"],
+      pageScripts: ["courseSidebar.js", "lesson.js"],
       showSidebarToggle: true,
     });
   } catch (error) {

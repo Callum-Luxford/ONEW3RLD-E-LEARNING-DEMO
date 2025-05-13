@@ -22,25 +22,67 @@ body {
     display: flex;
     flex-direction: column;
     gap: .2rem;
+
+    transition: box-shadow 0.3s ease;
 }
 
-.course-card-btn {
+.course-card-icons {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-bottom: .6rem;
 }
 
-/* Arrow button */
-.arrow-btn {
-    padding: 0.6rem;
+/* Actions container */
+.course-card-btns {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+}
+
+.course-card-btns a.arrow-btn,
+.course-card-btns a.download-btn {
+    width: 38px;
+    height: 38px;
     display: flex;
     align-items: center;
     justify-content: center;
+    border-radius: 50%;
+    padding: 0;
     cursor: pointer;
+    background-color: #000;
+    z-index: 1000;
+    transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
-.arrow-btn img {
-    height: 30px;
+.course-card-btns a.download-btn {
+    background-color: transparent;
+    border: 2px solid #FFD000;
+    transition: background-color 0.3s ease, border 0.3s ease;
+}
+
+.course-card-btns a.download-btn:hover {
+    background-color: var(--theme-clr-1);
+    border: 2px solid var(--theme-clr-1);
+}
+
+.course-card-btns a.download-btn img:hover {
+    filter: var(--icon-clr-4);
+}
+
+.course-card-btns a.download-btn img {
+    filter: var(--icon-clr-2);
+}
+
+.course-card-btns a.arrow-btn img {
+    filter: var(--icon-clr-1);
+}
+
+.course-card-btns a.arrow-btn img,
+.course-card-btns a.download-btn img {
+    width: 20px;
+    height: 20px;
+    transition: background-color 0.3s ease, border 0.3s ease;
 }
 
 .course-badge {
@@ -122,4 +164,20 @@ body {
     color: var(--font-clr-5);
     font-weight: var(--font-weight-6);
     text-align: right;
+}
+
+/* Link for the whole card to be active url */
+.course-card-link {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    text-indent: -9999px;
+    overflow: hidden;
+    background: transparent;
+}
+
+/* Hover card active arrow button style */
+.course-card:hover .arrow-btn {
+    background-color: var(--theme-clr-4);
+    transform: rotate(-90deg);
 }
