@@ -63,54 +63,56 @@
     margin-top: 2rem;
 }
 
-/* === Call to Action Buttons === */
-.lesson-actions {
-    margin-top: 2rem;
+
+/* === QUIZ INTRO === */
+.lesson-quiz-start-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    border: 2px solid var(--theme-clr-1);
+    border-radius: var(--border-radius-1);
     text-align: center;
+    overflow: hidden;
+    gap: 1rem;
 }
 
-.lesson-actions form {
-    display: inline-block;
-}
-
-.lesson-actions button {
-    background: #000;
-    color: #fff;
-    border: none;
-    padding: 12px 24px;
-    font-size: 1rem;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: background 0.2s ease-in-out;
-}
-
-.lesson-actions button:hover {
-    background: #222;
-}
-
-/* === Quiz Info Box === */
-.quiz-info {
-    background: #fff7cc;
-    border-left: 4px solid #ffc107;
-    padding: 16px;
-    border-radius: 10px;
-    margin-top: 1.5rem;
-    text-align: center;
-}
-
-.quiz-info p {
-    margin: 0.3rem 0;
-}
-
-/* === Completion Text === */
-.lesson-complete-message {
-    font-weight: 600;
-    color: #155724;
-    background-color: #d4edda;
+.quiz-intro-title,
+.quiz-intro-p,
+.lesson-quiz-button {
+    margin: 0;
     padding: 1rem;
-    border-radius: 8px;
-    margin-top: 1.5rem;
-    text-align: center;
 }
 
-/* === Responsive === */
+.lesson-quiz-button {
+    display: flex;
+    justify-content: center;
+    justify-self: center;
+    align-items: center;
+    padding: .8rem;
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-6);
+    border-radius: var(--border-radius-1);
+    cursor: pointer;
+    background-color: var(--theme-clr-1);
+    color: var(--font-clr-1);
+    max-width: 400px;
+    width: 100%;
+}
+
+.quiz-intro-title {
+    background-color: var(--theme-clr-1);
+    color: var(--font-clr-1);
+    border-radius: 0;
+}
+
+.quiz-intro-p {
+    padding: 1rem 1rem;
+}
+
+.lesson-quiz-button {
+    padding-bottom: 1rem;
+    margin-bottom: 1rem;
+}

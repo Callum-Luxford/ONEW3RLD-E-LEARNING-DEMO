@@ -16,3 +16,15 @@ body {
     padding-inline: 20px;
     margin-top: 2rem;
 }
+
+/* === DESKTOP === */
+@media (min-width: 1024px) {
+    .with-sidebar.grid-layout {
+        display: grid;
+        grid-template-columns: minmax(320px, 400px) minmax(360px, 1fr);
+        gap: 2rem;
+        padding: 2rem;
+        margin-left: 240px;
+        /* to account for fixed nav */
+    }
+}

@@ -47,6 +47,7 @@
     border-radius: 0;
     padding: 1rem 1.5rem;
 }
+
 .sidebar h3 {
     font-size: 1.1rem;
     font-weight: 700;
@@ -110,6 +111,44 @@
 .lesson-icon {
     font-size: 1rem;
 }
+
 .lesson-icon img {
     filter: var(--icon-clr-1);
+}
+
+
+
+
+/* === DESKTOP === */
+@media (min-width: 1024px) {
+    .course-sidebar-container {
+        max-width: 400px;
+        flex-shrink: 0;
+    }
+
+    .course-sidebar {
+        position: relative !important;
+        transform: none !important;
+        top: auto !important;
+        left: auto !important;
+        height: auto !important;
+        background: #000;
+        color: #fff;
+        padding: 1.5rem;
+        border-radius: var(--border-radius-1);
+        border: 1px solid #333;
+        overflow-y: auto;
+        z-index: auto !important;
+        pointer-events: auto !important;
+    }
+
+    .course-sidebar-overlay {
+        display: contents !important;
+        pointer-events: auto !important;
+    }
+
+    .lesson-wrapper {
+        width: 100%;
+    }
+
 }

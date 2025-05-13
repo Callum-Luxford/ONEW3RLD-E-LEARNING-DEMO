@@ -1,7 +1,10 @@
 // Modules
 const Course = require("../models/Course");
 const User = require("../models/User");
-const { getNextIncompleteLesson } = require("../utils/courseProgressHelpers");
+const {
+  getNextIncompleteLesson,
+  attachCourseProgress,
+} = require("../utils/courseProgressHelpers");
 
 // viewCourse request: - render courses
 exports.viewCourse = async (req, res) => {
@@ -23,6 +26,8 @@ exports.viewCourse = async (req, res) => {
       );
     }
 
+    attachCourseProgress(course, user);
+
     res.render("courses/index", {
       title: course.title,
       course,
@@ -39,8 +44,6 @@ exports.viewCourse = async (req, res) => {
     res.status(500).send("Error loading course");
   }
 };
-
-
 
 // ViewLesson - render lesson
 exports.viewLesson = async (req, res) => {
@@ -80,6 +83,8 @@ exports.viewLesson = async (req, res) => {
     console.log("Current lesson:", lesson.id);
     console.log("Completed lessons:", completedLessons);
     console.log("Is completed:", isCompleted);
+
+    attachCourseProgress(course, user);
 
     res.render("courses/index", {
       title: `${course.title} - ${lesson.title}`,
@@ -159,10 +164,11 @@ exports.completeLesson = async (req, res) => {
   }
 };
 
+// MARKET - Change later controller location dedicated
 // Show all courses for /courses/list
 exports.showAllCourses = async (req, res) => {
   try {
-    const courses = await Course.find();
+    const courses = await Course.find().lean();
     const user = await User.findById(req.user._id);
     const enrolledIds = user.enrolledCourses.map((c) => c.toString());
 
@@ -174,6 +180,8 @@ exports.showAllCourses = async (req, res) => {
       enrolledIds,
       preTitleText: "Available",
       pageTitle: "Courses",
+      pageStyles: ["courseMarket.css"],
+      pageScripts: [""],
     });
   } catch (err) {
     console.error("Error loading course list:", err);

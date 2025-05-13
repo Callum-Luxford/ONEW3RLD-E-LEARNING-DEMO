@@ -39,6 +39,8 @@
     padding: 0.5rem;
     cursor: pointer;
     position: relative;
+    display: flex;
+    align-items: center;
 }
 
 .sidebar-toggle-btn img {
@@ -68,4 +70,59 @@ body.sidebar-open section.user-greeting-card {
     background-color: #000 !important;
     overflow: hidden;
     transition: border-bottom-left-radius, border-bottom-right-radius 0.3s ease-in-out;
+}
+
+
+/* Moved items into container for fitting the progress bar */
+.subheader-inner-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    width: 100%;
+    gap: 0.75rem;
+}
+
+.subheader-main-content {
+    display: flex;
+    align-items: center;
+}
+
+/* === progress bar === */
+.subheader-course-progress {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 0.75rem;
+    flex-wrap: nowrap;
+    min-width: 250px;
+    /* ensures enough room */
+}
+
+/* Update progress bar if needed */
+.subheader-progress-bar {
+    flex: 1;
+    min-width: 150px;
+    /* forces it not to collapse */
+    height: 6px;
+    background: #ffd0003e;
+    border-radius: var(--border-radius-1);
+    overflow: hidden;
+}
+
+.subheader-progress-fill {
+    height: 100%;
+    background: #FFD000;
+    transition: width 0.4s ease;
+
+    width: 0%;
+    transition: width 1s ease-in-out;
+}
+
+.subheader-progress-text {
+    font-size: var(--font-size-sm);
+    color: var(--font-clr-5);
+    font-weight: var(--font-weight-6);
+    text-align: right;
+    width: auto;
 }

@@ -32,13 +32,18 @@
                         <div class="lesson-footer">
                             <% if (!isCompleted && !isLockedModule) { %>
                                 <% if (hasQuiz) { %>
-                                    <div class="lesson-quiz-start">
-                                        <p><strong>This quiz consists of <%= lesson.quiz.questions.length %>
-                                                    questions.</strong></p>
-                                        <p><em>Get all questions correct to progress to the next module.</em></p>
+                                    <div class="lesson-quiz-start-box">
+                                        <p class="quiz-intro-title"><strong>This quiz consists of <%=
+                                                    lesson.quiz.questions.length %> questions.</strong>
+                                        </p>
+                                        <p class="quiz-intro-p"><em>Get all questions correct to progress to the next
+                                                module.</em></p>
+
                                         <form method="GET"
                                             action="/courses/<%= course._id %>/modules/<%= moduleId %>/lessons/<%= lesson.id %>/quiz?q=0">
-                                            <button type="submit" class="lesson-quiz-button">Start Quiz</button>
+                                            <div onclick="this.closest('form').submit()" class="lesson-quiz-button">
+                                                Start Quiz
+                                            </div>
                                         </form>
                                     </div>
                                     <% } else { %>

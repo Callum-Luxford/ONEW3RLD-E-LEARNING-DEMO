@@ -1,21 +1,32 @@
 <section class="user-greeting-card">
-    <% if (showSidebarToggle) { %>
+  <div class="subheader-inner-wrapper">
+    <div class="subheader-main-content">
+      <% if (showSidebarToggle) { %>
         <button id="sidebarToggle" class="sidebar-toggle-btn" aria-label="Toggle sidebar">
-            <img src="/icons/arrow-right.png" alt="Open Sidebar" />
+          <img src="/icons/arrow-right.png" alt="Open Sidebar" />
         </button>
         <% } %>
 
-            <% if (pageTitle) { %>
-                <p><span>
-                        <%= pageTitle %>
-                    </span></p>
-                <% } else { %>
-                    <p>Welcome <span>
-                            <%= user?.fullName || user?.email || "Guest" %>,
-                        </span></p>
-                    <% } %>
-</section>
+          <% if (pageTitle) { %>
+            <p><span>
+                <%= pageTitle %>
+              </span></p>
+            <% } else { %>
+              <p>Welcome <span>
+                  <%= user?.fullName || user?.email || "Guest" %>,
+                </span></p>
+              <% } %>
+    </div>
 
-<% if (course && typeof course==='object' && course._id) { %>
-    <%- include('../partials/courseSidebar.ejs', { course, currentLesson, user }) %>
-        <% } %>
+    <% if (course && course.progressPercent !==undefined) { %>
+      <div class="subheader-course-progress">
+        <div class="subheader-progress-bar">
+          <div class="subheader-progress-fill" data-progress="<%= course.progressPercent %>"></div>
+        </div>
+        <span class="subheader-progress-text">
+          Completed: <%= course.completedLessons %> / <%= course.totalLessons %>
+        </span>
+      </div>
+      <% } %>
+  </div>
+</section>

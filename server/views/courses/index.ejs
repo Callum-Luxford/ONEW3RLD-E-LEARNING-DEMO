@@ -1,4 +1,8 @@
-<main class="with-sidebar">
+<main class="with-sidebar grid-layout">
+    <div class="course-sidebar-container">
+        <%- include('../partials/courseSidebar', { course, user }) %>
+    </div>
+
     <% if (currentLesson) { %>
         <%- include('lesson', { lesson: currentLesson }) %>
             <% } else { %>

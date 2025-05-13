@@ -1,4 +1,4 @@
-<div id="courseSidebar" class="course-sidebar-overlay">
+<div class="course-sidebar-overlay">
     <div class="course-sidebar">
         <h2>
             <%= course.title %>
@@ -17,7 +17,6 @@
                             <% module.lessons.forEach((lesson, index)=> {
                                 const lessonNumber = `${moduleIndex + 1}.${index + 1}`;
                                 const isCompleted = completed.includes(lesson.id);
-
                                 %>
                                 <li>
                                     <div class="lesson-link-wrap"
@@ -27,19 +26,14 @@
                                             <%= lessonNumber %> - <%= lesson.title %>
                                         </a>
                                         <span class="lesson-icon">
-                                            <% if (isCompleted) { %>
-                                                ✅
-                                                <% } else { %>
-                                                    🔒
-                                                    <% } %>
+                                            <%= isCompleted ? "✅" : "🔒" %>
                                         </span>
                                     </div>
                                 </li>
-
                                 <% }); %>
                         </ul>
-
                     </div>
                     <% }); %>
     </div>
 </div>
+  

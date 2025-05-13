@@ -5,46 +5,45 @@ document.addEventListener("DOMContentLoaded", () => {
 
   if (!toggleBtn || !overlay || !sidebar) return;
 
-  // Toggle sidebar open/close
-  toggleBtn.addEventListener("click", () => {
-    const isOpen = sidebar.classList.contains("open");
+  const isMobile = () => window.innerWidth < 1024;
 
-    if (isOpen) {
-      sidebar.classList.remove("open");
-      overlay.classList.remove("open");
-      toggleBtn.classList.remove("active");
-      document.body.classList.remove("sidebar-open");
-    } else {
+  if (isMobile()) {
+    const openSidebar = () => {
       sidebar.classList.add("open");
       overlay.classList.add("open");
       toggleBtn.classList.add("active");
       document.body.classList.add("sidebar-open");
-    }
-  });
+    };
 
-  // Click anywhere outside sidebar (even inside overlay) to close
-  // Close when clicking anywhere on the overlay (including its children)
-  overlay.addEventListener("click", (e) => {
-    if (sidebar.classList.contains("open")) {
+    const closeSidebar = () => {
       sidebar.classList.remove("open");
       overlay.classList.remove("open");
       toggleBtn.classList.remove("active");
       document.body.classList.remove("sidebar-open");
-    }
-  });
+    };
 
-  // Close when clicking a link
-  sidebar.querySelectorAll("a").forEach((link) => {
-    link.addEventListener("click", () => {
-      sidebar.classList.remove("open");
-      overlay.classList.remove("open");
-      toggleBtn.classList.remove("active");
-
-      setTimeout(() => {
-        document.body.classList.remove("sidebar-open");
-      }, 300); // matches your CSS transition duration
+    // Toggle on button
+    toggleBtn.addEventListener("click", (e) => {
+      e.stopPropagation(); // prevent document click from firing
+      const isOpen = sidebar.classList.contains("open");
+      isOpen ? closeSidebar() : openSidebar();
     });
-  });
+
+    // Click anywhere on page — except the toggle button — closes sidebar
+    document.addEventListener("click", (e) => {
+      const isOpen = sidebar.classList.contains("open");
+
+      // Don't close if clicking the toggle button
+      if (!isOpen || toggleBtn.contains(e.target)) return;
+
+      closeSidebar();
+    });
+
+    // Optional: pressing links still closes it as well
+    sidebar.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", () => {
+        closeSidebar();
+      });
+    });
+  }
 });
-
-
