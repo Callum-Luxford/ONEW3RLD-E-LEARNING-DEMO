@@ -1,18 +1,34 @@
-<main class="with-sidebar">
-    <h2>Module 1 Quiz Result</h2>
+<main class="with-sidebar result-wrapper">
 
-    <p><strong>Your Score:</strong>
-        <%= score %> / <%= total %>
-    </p>
+    <div class="quiz-result-card">
+        <div class="quiz-result-header <%= score === total ? 'passed' : 'failed' %>">
+            <%= score===total ? 'Passed' : 'Failed' %>
+        </div>
 
-    <% if (score < total) { %>
-        <p>You did not pass the quiz.</p>
+        <div class="quiz-result-body">
+            <% if (score < total) { %>
+                <p class="result-message">
+                    You scored <%= score %> / <%= total %>. You need to answer all questions correctly to progress to
+                            the next Module
+                </p>
 
-        <form method="GET" action="/courses/<%= course._id %>/modules/<%= module.id %>/lessons/<%= lesson.id %>/quiz">
-            <input type="hidden" name="q" value="0">
-            <button type="submit">Retake Module 1 Quiz</button>
-        </form>
-        <% } else { %>
-            <p>Congratulations! You passed! You’ll now receive your certificate.</p>
-            <% } %>
+                <div class="result-actions">
+                    <!-- <a href="/courses/<%= course._id %>/modules/<%= module.id %>/lessons/<%= lesson.id %>/review"
+                        class="btn btn-black">Review</a> -->
+                    <form method="GET"
+                        action="/courses/<%= course._id %>/modules/<%= module.id %>/lessons/<%= lesson.id %>/quiz">
+                        <input type="hidden" name="q" value="0">
+                        <button type="submit" class="quiz-retake-btn">Retake <%= module.id %> Quiz</button>
+                    </form>
+                </div>
+
+                <% } else { %>
+                    <p class="result-message success">
+                        Congratulations! You passed the quiz and will now receive your certificate.
+                    </p>
+                    <% } %>
+        </div>
+    </div>
+
 </main>
+  

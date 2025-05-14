@@ -2,38 +2,59 @@
 
     <section class="lesson-wrapper">
 
-        <h2>
-            <%= lesson.title %>
-        </h2>
-        <p>Answer all questions correctly to complete the module.</p>
+        <form class="quiz-form" method="POST"
+            action="/courses/<%= course._id %>/modules/<%= module.id %>/lessons/<%= lesson.id %>/quiz" id="quizForm">
 
-        <form method="POST" action="/courses/<%= course._id %>/modules/<%= module.id %>/lessons/<%= lesson.id %>/quiz"
-            id="quizForm">
             <% lesson.quiz.questions.forEach((question, qIndex)=> { %>
                 <div class="question-block" data-index="<%= qIndex %>"
                     style="<%= qIndex === 0 ? '' : 'display:none;' %>">
-                    <h3>Question <%= qIndex + 1 %> / <%= totalQuestions %>
-                    </h3>
-                    <p>
-                        <%= question.question %>
-                    </p>
 
-                    <% question.options.forEach((option, i)=> { %>
-                        <label>
-                            <input type="checkbox" name="answers[<%= qIndex %>][]" value="<%= i %>">
-                            <%= option %>
-                        </label><br />
-                        <% }) %>
+                    <!-- Progress section -->
+                    <div class="quiz-meta">
+                        <p class="quiz-progress-label">Question <%= qIndex + 1 %> / <%= totalQuestions %>
+                        </p>
+                        <div class="progress-bar">
+                            <div class="progress-fill" data-fill-step="<%= qIndex %>"
+                                data-total="<%= totalQuestions %>"></div>
+                        </div>
+                    </div>
 
-                            <% if (qIndex < totalQuestions - 1) { %>
-                                <button type="button" class="next-btn">Next Question</button>
-                                <% } else { %>
-                                    <button type="submit">Submit Quiz</button>
-                                    <% } %>
+                    <!-- Instruction -->
+                    <p class="quiz-instruction">Answer all questions correctly to complete the module.</p>
+
+                    <!-- Question -->
+                    <div class="quiz-question">
+                        <span class="question-number">Q<%= qIndex + 1 %>:</span>
+                        <h3 class="question-text">
+                            <%= question.question %>
+                        </h3>
+                    </div>
+
+                    <!-- Options -->
+                    <div class="quiz-options">
+                        <% question.options.forEach((option, i)=> { %>
+                            <label class="quiz-option">
+                                <input type="checkbox" name="answers[<%= qIndex %>][]" value="<%= i %>">
+                                <span class="option-text">
+                                    <%= option %>
+                                </span>
+                            </label>
+                            <% }) %>
+                    </div>
+
+                    <!-- Nav -->
+                    <div class="quiz-nav">
+                        <% if (qIndex < totalQuestions - 1) { %>
+                            <button type="button" class="quiz-next">Next Question</button>
+                            <% } else { %>
+                                <button type="submit" class="quiz-submit">Submit Quiz</button>
+                                <% } %>
+                    </div>
+
                 </div>
                 <% }) %>
+
         </form>
 
     </section>
-
 </main>

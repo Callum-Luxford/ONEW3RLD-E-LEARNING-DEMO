@@ -105,7 +105,7 @@ exports.submitQuiz = async (req, res) => {
       total: questions.length,
       title: "Quiz Failed",
       pageTitle: "Quiz Result",
-      pageStyles: ["quiz.css", "sidebar.css"],
+      pageStyles: ["quiz.css", "sidebar.css", "quiz-result.css"],
       pageScripts: ["courseSidebar.js"],
       showSidebarToggle: true,
     });

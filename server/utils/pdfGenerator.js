@@ -9,73 +9,56 @@ async function createCertificatePDF(user, course, certId, req) {
 
   const fileName = `${user._id}-${certId}.pdf`;
   const certPath = path.join(certDir, fileName);
-  const doc = new PDFDocument({ size: "A4", layout: "landscape", margin: 50 });
-
+  const doc = new PDFDocument({ size: "A4", layout: "portrait", margin: 0 });
   const stream = fs.createWriteStream(certPath);
   doc.pipe(stream);
 
-  // Header
-  doc.fontSize(28).fillColor("#000").text("UAE", { align: "left" });
-  doc
-    .fontSize(24)
-    .fillColor("#000")
-    .text("Certificate of Completion", { align: "center", underline: true });
-
-  // Spacer
-  doc.moveDown(2);
-
-  // Full Name
-  doc
-    .fontSize(36)
-    .fillColor("#000")
-    .text(user.fullName, { align: "center", bold: true });
-
-  // Subtext
-  doc
-    .moveDown()
-    .fontSize(18)
-    .text("This is to certify that", { align: "center" })
-    .moveDown()
-    .fontSize(22)
-    .text(`has successfully completed the accredited training course:`, {
-      align: "center",
+  const bgPath = path.join(__dirname, "../templates/certificate-bg.png");
+  if (fs.existsSync(bgPath)) {
+    doc.image(bgPath, 0, 0, {
+      width: doc.page.width,
+      height: doc.page.height,
     });
+  }
 
-  // Course Title
-  doc
-    .moveDown()
-    .fontSize(24)
-    .fillColor("#003366")
-    .text(course.title, { align: "center", bold: true });
+  doc.fillColor("white").font("Helvetica-Bold");
 
-  // Certificate ID + Date
   const issuedAt = new Date();
-  doc
-    .fontSize(12)
-    .fillColor("black")
-    .text(`Certificate Number: ${certId}`, 50, 500)
-    .text(`Date Issued: ${issuedAt.toLocaleDateString()}`, 50, 515);
 
-  // QR Code
+  // Date — inline with "Date Issued:"
+  doc.fontSize(12).text(issuedAt.toLocaleDateString(), 315, 148);
+
+  // Full Name — centered, lifted higher
+  doc.fontSize(32).text(user.fullName, 130, 230, {
+    width: 330,
+    align: "center",
+  });
+
+  // Certificate ID — higher position
+  doc.fontSize(14).text(certId, 140, 330, {
+    width: 310,
+    align: "center",
+  });
+
+  // Course Title — sharply lifted
+  doc.fontSize(18).text(course.title, 110, 410, {
+    width: 370,
+    align: "center",
+  });
+
+  // QR Code — unchanged
   const qrUrl = `${req.protocol}://${req.get(
     "host"
   )}/certificate/verify/${certId}`;
   const qrDataUrl = await QRCode.toDataURL(qrUrl);
-  doc.image(qrDataUrl, 700, 430, { width: 80 });
-
-  // Signatures (placeholder)
-  doc
-    .fontSize(14)
-    .text("Signed on behalf of RSA UAE", 100, 430)
-    .text("xxxxxxxx", 100, 450)
-    .text("CEO Director", 100, 470);
-
-  doc
-    .text("Signed on behalf of NQC", 500, 430)
-    .text("xxxxxxxx", 500, 450)
-    .text("Training Lead", 500, 470);
+  doc.image(qrDataUrl, 260, 500, { width: 80 });
 
   doc.end();
+
+  await new Promise((resolve, reject) => {
+    stream.on("finish", resolve);
+    stream.on("error", reject);
+  });
 
   return { certPath, fileName, issuedAt };
 }

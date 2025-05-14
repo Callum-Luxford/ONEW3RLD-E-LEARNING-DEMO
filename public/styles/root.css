@@ -129,7 +129,10 @@
     --box-shadow-border: 0 0 0 0.25px rgba(255, 204, 0, 0.5);
     --border-clr-1: grey;
     --border-focus-clr: gold;
+
+    /* BorderRaidus cards */
     --border-radius-1: 30px;
+    --border-radius-card: 30px;
 
     --icon-clr-1: invert(100%) sepia(100%) saturate(0%) hue-rotate(288deg) brightness(102%) contrast(102%);
     --icon-clr-2: invert(72%) sepia(84%) saturate(998%) hue-rotate(360deg) brightness(105%) contrast(102%);
@@ -138,6 +141,21 @@
 
     --header-height: 60px;
     --subheader-height: 120px;
+
+
+    /* Buttons */
+    --btn-bg-clr-1: #000000;
+    --btn-text-clr-1: #FFFFFF;
+    --btn-hover-clr-1: #424242;
+
+    /* Background hover transitions */
+    --bg-hover-ts-1: background-color .2s ease;
+
+    /* background-hover-clr */
+    --bg-hover-clr-1: #ddd;
+
+    /* Card background clr */
+    --card-bg-clr-1: #FFFFFF;
 }
 
 *,

@@ -31,7 +31,7 @@ exports.renderSuccessPage = async (req, res) => {
       pageTitle: "Course Completed",
       showSidebarToggle: true,
       currentLesson: null, // optional depending on your sidebar logic
-      pageStyles: ["sidebar.css", "quiz.css"],
+      pageStyles: ["sidebar.css", "quiz.css", "quiz-result.css"],
       pageScripts: ["courseSidebar.js"],
       hasCompletedCourse,
     });

@@ -1,29 +1,136 @@
-/* Quiz-specific overrides */
-.quiz-mode .lesson-wrapper {
-    padding: 2rem;
-    background: #f9f9f9;
+/* ===== Base Layout ===== */
+.quiz-mode {
+    padding: 0;
+}
+
+/* ===== Question Container ===== */
+.question-block {
+    background: var(--theme-clr-3);
+    padding: 2rem 1.5rem;
+    max-width: 700px;
+    margin: 0 auto;
     border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
 }
 
-.quiz-mode h2,
-.quiz-mode h3 {
-    margin-bottom: 1rem;
-    font-size: 1.4rem;
-    color: #111;
+/* ===== Progress Header ===== */
+.quiz-meta {
+    text-align: left;
 }
 
-.quiz-mode .question-block {
+.quiz-progress-label {
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: #222;
+    margin-bottom: 0.5rem;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 6px;
+    background-color: #ddd;
+    border-radius: 6px;
+    overflow: hidden;
     margin-bottom: 2rem;
 }
 
-.quiz-mode .next-btn,
-.quiz-mode button[type="submit"] {
-    display: inline-block;
-    margin-top: 1rem;
+.progress-fill {
+    height: 100%;
+    width: 0%;
     background-color: #ffc107;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 6px;
+    transition: width 0.4s ease-in-out;
+}
+
+/* ===== Instruction Text ===== */
+.quiz-instruction {
+    font-size: 1rem;
+    color: #333;
+    font-weight: 500;
+    margin-bottom: 1rem;
+}
+
+/* ===== Question Text ===== */
+.quiz-question {
+    display: flex;
+    align-items: baseline;
+    gap: 0.5rem;
+    font-size: 1.1rem;
     font-weight: bold;
+    color: #111;
+    /* margin-bottom: 1rem; */
+}
+
+/* ===== Option Buttons ===== */
+.quiz-options {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.quiz-option {
+    background-color: #eee;
+    border-radius: 8px;
+    padding: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.quiz-option:hover {
+    background-color: var(--bg-hover-clr-1);
+}
+
+.quiz-option input[type="checkbox"] {
+    display: none;
+}
+
+.quiz-option.selected {
+    background-color: var(--theme-clr-2);
+    font-weight: bold;
+}
+
+/* ===== Navigation Buttons ===== */
+.quiz-nav {
+    display: flex;
+    justify-content: center;
+}
+
+.quiz-next,
+.quiz-submit {
+    background: #000;
+    color: var(--font-clr-1);
+    font-weight: bold;
+    padding: 0.8rem 2rem;
+    border: none;
+    border-radius: 8px;
+    font-size: var(--font-size-lg);
+    cursor: pointer;
+    transition: background 0.2s ease;
+    width: 100%;
+}
+
+.quiz-next:hover,
+.quiz-submit:hover {
+    background: var(--btn-hover-clr-1);
+}
+
+/* ===== Reference Button (Optional CTA) ===== */
+.ref-btn {
+    margin: 2rem auto 0;
+    background: #ffe065;
+    color: #000;
+    font-weight: bold;
+    border: 2px solid #000;
+    padding: 0.6rem 1.5rem;
+    border-radius: 20px;
+    display: block;
+    text-align: center;
+    font-size: 0.95rem;
     cursor: pointer;
 }
+
+/* ===== Responsive Behavior ===== */

@@ -1,29 +1,38 @@
-<main class="with-sidebar certificate-success">
-    <h2 class="section-title">
-        <%= course.title %>
-    </h2>
+<main class="with-sidebar quiz-success-success-page">
 
-    <p><strong>Hello <%= user.fullName %>,</strong></p>
+    <section class="quiz-success-success-card">
 
-    <p>
-        We congratulate you on completing the course and wish you great success in applying your new knowledge.
-    </p>
-
-    <p>
-        If you’ve completed all the lessons in the course, you can obtain your certificate by downloading it using the
-        buttons below.
-    </p>
-
-    <% if (hasCompletedCourse) { %>
-        <div class="certificate-buttons">
-            <a href="/certificate/<%= course._id %>/download" class="btn cert-btn">
-                <i class="fa fa-file-pdf-o"></i>
-                <span>
-                    <%= course.title %>
-                </span>
-            </a>
+        <div class="quiz-success-header">
+            <h1 class="quiz-success-course-title">
+                <%= course.title %>
+            </h1>
         </div>
-        <% } else { %>
-            <p class="warning">You must complete all lessons to unlock the certificate.</p>
-            <% } %>
+
+        <div class="quiz-success-message">
+            <p class="quiz-success-name"><strong>Hello <%= user.fullName %>,</strong></p>
+            <p class="quiz-success-info">
+                We congratulate you on completing the course and wish you great success in applying your new knowledge.
+            </p>
+            <p class="quiz-success-info">
+                If you’ve completed all the lessons in the course, you can obtain your certificate by downloading it
+                using the buttons below.
+            </p>
+        </div>
+
+        <% if (hasCompletedCourse) { %>
+            <div class="quiz-success-actions">
+                <a href="/certificate/<%= course._id %>/download" class="quiz-success-btn">
+                    <img src="/icons/certified.png" alt="">
+                    <span>
+                        <%= course.title %>
+                    </span>
+                </a>
+            </div>
+            <% } else { %>
+                <p class="quiz-success-warning">You must complete all lessons to unlock the certificate.</p>
+                <% } %>
+
+    </section>
+
 </main>
+  

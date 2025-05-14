@@ -15,6 +15,28 @@ exports.generateCertificate = async (req, res) => {
     const course = await Course.findById(courseId);
     const user = await User.findById(userId);
 
+    console.log("🔍 Checking certificate for user:", userId);
+    console.log("🔍 Requested courseId:", courseId);
+    const existingCert = user.certificates.find(
+      (c) => c.courseId.toString() === courseId.toString()
+    );
+
+    if (existingCert) {
+      const certFile = path.join(
+        __dirname,
+        "../../",
+        existingCert.filePath.replace(/^\/+/, "")
+      );
+      console.log("📄 Checking existing cert file:", certFile);
+
+      if (fs.existsSync(certFile)) {
+        console.log("Serving existing certificate");
+        return res.download(certFile);
+      } else {
+        console.log("DB record found but file is missing");
+      }
+    }
+
     const progress = user.progress.find((p) => p.course.equals(courseId));
     if (!progress || !progress.completedLessons.includes("1-1-quiz")) {
       return res.status(403).send("Complete the course to unlock certificate.");
