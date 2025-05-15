@@ -26,7 +26,7 @@
     padding: 1rem 20px;
     overflow-y: auto;
     transition: transform 0.3s ease-in-out;
-    margin-bottom: 2rem;
+    padding-bottom: calc(80px + env(safe-area-inset-bottom));
 }
 
 .course-sidebar.open {
