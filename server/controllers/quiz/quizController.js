@@ -47,6 +47,7 @@ exports.renderQuiz = async (req, res) => {
 };
 
 // submitQuiz - Quiz submission
+// submitQuiz - Quiz submission
 exports.submitQuiz = async (req, res) => {
   const { courseId, moduleId, lessonId } = req.params;
 
@@ -92,6 +93,34 @@ exports.submitQuiz = async (req, res) => {
 
       await user.save();
 
+      // ✅ Auto-generate certificate on success
+      const { createCertificatePDF } = require("../../utils/pdfGenerator");
+      const existingCert = user.certificates.find(
+        (c) => c.courseId.toString() === courseId.toString()
+      );
+
+      if (!existingCert) {
+        const certificateId = `RSA-${user._id.toString().slice(-6)}-${Date.now()
+          .toString()
+          .slice(-4)}`;
+
+        const { certPath, fileName, issuedAt } = await createCertificatePDF(
+          user,
+          course,
+          certificateId,
+          req
+        );
+
+        user.certificates.push({
+          courseId,
+          filePath: `/certificates/${fileName}`,
+          issuedAt,
+          certId: certificateId,
+        });
+
+        await user.save();
+      }
+
       return res.redirect(`/courses/${courseId}/success`);
     }
 
@@ -100,7 +129,7 @@ exports.submitQuiz = async (req, res) => {
       module,
       lesson,
       currentLesson: lesson,
-      user: req.user, // sidebar and subheader
+      user: req.user,
       score,
       total: questions.length,
       title: "Quiz Failed",
