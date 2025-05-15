@@ -89,6 +89,11 @@
     color: var(--font-clr-1);
     width: 100%;
     margin-top: 2rem;
+    transition: var(--bg-hover-ts-1);
+}
+
+.lesson-submit-button:hover {
+    background-color: var(--theme-clr-4)
 }
 
 
