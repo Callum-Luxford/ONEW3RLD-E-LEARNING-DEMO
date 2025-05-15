@@ -62,11 +62,11 @@
 /* Dropdown nav */
 /* Nav Overlay (mobile) */
 .nav-overlay {
-    position: absolute;
+    position: fixed;
     top: 60px;
     left: 0;
     width: 100%;
-    height: calc(100vh - 60px);
+    height: calc(100dvh - var(--header-height));
     overflow: hidden;
     background: #000;
     z-index: 9999;
