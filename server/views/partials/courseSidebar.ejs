@@ -26,7 +26,11 @@
                                             <%= lessonNumber %> - <%= lesson.title %>
                                         </a>
                                         <span class="lesson-icon">
-                                            <%= isCompleted ? "✅" : "🔒" %>
+                                            <% if (isCompleted) { %>
+                                                <img src="/icons/check.png" alt="Completed" width="16" height="16" />
+                                                <% } else { %>
+                                                    <img src="/icons/lock.png" alt="Locked" width="16" height="16" />
+                                                    <% } %>
                                         </span>
                                     </div>
                                 </li>
@@ -36,4 +40,3 @@
                     <% }); %>
     </div>
 </div>
-  
