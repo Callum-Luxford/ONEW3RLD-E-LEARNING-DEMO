@@ -45,8 +45,9 @@
 
                                         <form method="GET"
                                             action="/courses/<%= course._id %>/modules/<%= moduleId %>/lessons/<%= lesson.id %>/quiz?q=0">
-                                            <div onclick="this.closest('form').submit()" class="lesson-quiz-button">
-                                                Start Quiz
+                                            <div class="quiz-button-wrapper">
+                                                <div onclick="this.closest('form').submit()" class="lesson-quiz-button">
+                                                    Start Quiz</div>
                                             </div>
                                         </form>
                                     </div>
