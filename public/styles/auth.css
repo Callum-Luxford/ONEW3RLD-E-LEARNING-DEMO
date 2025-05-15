@@ -146,10 +146,9 @@ input:-webkit-autofill:active {
 
 @media (max-width: 768px) {
 
-    input,
-    select,
-    textarea {
-        font-size: 16px;
-        /* Prevent iOS input zoom */
+    .auth-box input[type="text"],
+    .auth-box input[type="email"],
+    .auth-box input[type="password"] {
+        font-size: 16px !important;
     }
 }
