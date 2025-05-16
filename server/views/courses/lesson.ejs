@@ -23,7 +23,7 @@
 
         <% if (localizedVideoUrl) { %>
             <div class="lesson-video">
-                <video src="<%= localizedVideoUrl %>" controls style="width: 100%; max-width: 800px;"></video>
+                <video id="lessonVideo" src="<%= localizedVideoUrl %>" controls style="width: 100%;"></video>
 
                 <div class="video-overlay" id="videoOverlay">
                     <img src="/icons/play-button-arrow.png" alt="<%= __('lesson.play') %>" />
