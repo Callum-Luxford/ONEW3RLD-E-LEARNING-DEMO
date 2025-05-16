@@ -6,35 +6,35 @@
                 <div class="course-card">
                     <div class="course-card-icons">
                         <span class="course-badge">
-                            <img src="/icons/layer.png" alt=""> Course
+                            <img src="/icons/layer.png" alt="">
+                            <%= __('dashboard.cardBadge') %>
                         </span>
 
                         <div class="course-card-btns">
                             <% if (course.hasCertificate) { %>
                                 <a href="/certificate/<%= course._id %>/download" class="download-btn"
-                                    title="Download Certificate">
-                                    <img src="/icons/download.png" alt="Download Certificate" />
+                                    title="<%= __('dashboard.downloadCertificate') %>">
+                                    <img src="/icons/download.png" alt="<%= __('dashboard.downloadCertificate') %>" />
                                 </a>
                                 <% } %>
 
                                     <a href="/courses/<%= course._id %>" class="arrow-btn">
-                                        <img src="/icons/right-arrow.png" alt="View Course">
+                                        <img src="/icons/right-arrow.png" alt="<%= __('dashboard.viewCourse') %>">
                                     </a>
                         </div>
                     </div>
 
-
                     <h2>
-                        <%= course.title %>
+                        <%= course.title?.[lang] || course.title %>
                     </h2>
 
                     <h4>
-                        <%= course.subtitle %>
+                        <%= course.subtitle?.[lang] || course.subtitle %>
                     </h4>
 
                     <p class="course-subtitle">
-                        <img class="card-info-icon" src="/icons/info.png" alt="">
-                        <%= course.summary %>
+                        <img class="card-info-icon" src="/icons/info.png" alt="<%= __('dashboard.infoAlt') %>">
+                        <%= course.summary?.[lang] || course.summary %>
                     </p>
 
                     <div class="course-progress">
@@ -43,16 +43,19 @@
                         </div>
 
                         <span class="progress-text">
-                            Completed: <%= course.completedLessons %> / <%= course.totalLessons %>
+                            <%= __('dashboard.cardProgress') %>
+                                <%= course.completedLessons %> / <%= course.totalLessons %>
                         </span>
                     </div>
 
-                    <a href="/courses/<%= course._id %>" class="course-card-link" aria-label="View course"></a>
-
+                    <a href="/courses/<%= course._id %>" class="course-card-link"
+                        aria-label="<%= __('dashboard.viewCourse') %>"></a>
                 </div>
                 <% }) %>
         </section>
         <% } else { %>
-            <p>No courses enrolled yet.</p>
+            <p>
+                <%= __('dashboard.noCourses') %>
+            </p>
             <% } %>
 </main>

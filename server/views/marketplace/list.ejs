@@ -6,28 +6,34 @@
             %>
             <div class="course-market-card">
                 <div class="course-market-card-btn">
-                    <span class="course-market-badge"><img src="/icons/layer.png" alt=""> Course</span>
+                    <span class="course-market-badge"><img src="/icons/layer.png" alt="">
+                        <%= __('courseMarket.courseBadge') %>
+                    </span>
                 </div>
-                
+
                 <h2 class="course-market-card-title">
-                    <%= course.title %>
+                    <%= course.title[lang] %>
                 </h2>
 
                 <h4 class="course-market-card-subtitle">
-                    <%= course.subtitle %>
+                    <%= course.subtitle[lang] %>
                 </h4>
 
                 <p class="course-market-subtitle">
                     <img class="course-market-info-icon" src="/icons/info.png" alt="">
-                    <%- course.summary %>
+                    <%- course.summary[lang] %>
                 </p>
 
                 <div class="course-card-footer">
                     <% if (isEnrolled) { %>
-                        <button class="enroll-btn enrolled" disabled>Enrolled</button>
+                        <button class="enroll-btn enrolled" disabled>
+                            <%= __('courseMarket.enrolled') %>
+                        </button>
                         <% } else { %>
                             <form method="POST" action="/courses/<%= course._id %>/enroll">
-                                <button type="submit" class="enroll-btn">Enroll</button>
+                                <button type="submit" class="enroll-btn">
+                                    <%= __('courseMarket.enroll') %>
+                                </button>
                             </form>
                             <% } %>
                 </div>

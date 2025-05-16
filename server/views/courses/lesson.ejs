@@ -1,11 +1,19 @@
 <% let moduleId=null; for (const mod of course.modules) { if (mod.lessons.some(l=> l.id === lesson.id)) {
     moduleId = mod.id;
     break;
-    }
-    }
+    } }
     const currentModule = course.modules.find(m => m.id === moduleId);
     const isLockedModule = currentModule?.isDemoOnly === true;
     const hasQuiz = lesson.quiz && lesson.quiz.questions && lesson.quiz.questions.length > 0;
+    // Determine localized video URL
+    let localizedVideoUrl;
+    if (typeof lesson.videoUrl === 'string') {
+    localizedVideoUrl = lesson.videoUrl;
+    } else if (lesson.videoUrl && typeof lesson.videoUrl === 'object') {
+    localizedVideoUrl = lesson.videoUrl[lang] || lesson.videoUrl.en || "";
+    } else {
+    localizedVideoUrl = "";
+    }
     %>
 
     <section class="lesson-wrapper">
@@ -13,58 +21,74 @@
             <%= lesson.title %>
         </h3>
 
-        <% if (lesson.videoUrl) { %>
+        <% if (localizedVideoUrl) { %>
             <div class="lesson-video">
-                <video id="lessonVideo" src="<%= lesson.videoUrl %>" preload="metadata"></video>
+                <video src="<%= localizedVideoUrl %>" controls style="width: 100%; max-width: 800px;"></video>
+
                 <div class="video-overlay" id="videoOverlay">
-                    <img src="/icons/play-button-arrow.png" alt="Play" />
+                    <img src="/icons/play-button-arrow.png" alt="<%= __('lesson.play') %>" />
                 </div>
             </div>
-            <% } %>
+            <% } else { %>
+                <p style="color: gray;">No video available for this lesson.</p>
+                <% } %>
 
-
-                <% if (!hasQuiz) { %>
-                    <!-- Show lesson content only if it’s not a quiz -->
-                    <div class="lesson-body-content">
-                        <div class="lesson-content">
-                            <%- lesson.content %>
+                    <% if (!hasQuiz) { %>
+                        <div class="lesson-body-content">
+                            <div class="lesson-content">
+                                <%- lesson.content %>
+                            </div>
                         </div>
-                    </div>
-                    <% } %>
+                        <% } %>
 
+                            <div class="lesson-footer">
+                                <% if (!isCompleted && !isLockedModule) { %>
+                                    <% if (hasQuiz) { %>
+                                        <div class="lesson-quiz-start-box">
+                                            <p class="quiz-intro-title">
+                                                <strong>
+                                                    <%= __('lesson.quizIntro', { count: lesson.quiz.questions.length })
+                                                        %>
+                                                </strong>
+                                            </p>
+                                            <p class="quiz-intro-p">
+                                                <em>
+                                                    <%= __('lesson.quizInstruction') %>
+                                                </em>
+                                            </p>
 
-                        <div class="lesson-footer">
-                            <% if (!isCompleted && !isLockedModule) { %>
-                                <% if (hasQuiz) { %>
-                                    <div class="lesson-quiz-start-box">
-                                        <p class="quiz-intro-title"><strong>This quiz consists of <%=
-                                                    lesson.quiz.questions.length %> questions.</strong>
-                                        </p>
-                                        <p class="quiz-intro-p"><em>Get all questions correct to progress to the next
-                                                module.</em></p>
-
-                                        <form method="GET"
-                                            action="/courses/<%= course._id %>/modules/<%= moduleId %>/lessons/<%= lesson.id %>/quiz?q=0">
-                                            <div class="quiz-button-wrapper">
-                                                <div onclick="this.closest('form').submit()" class="lesson-quiz-button">
-                                                    Start Quiz</div>
-                                            </div>
-                                        </form>
-                                    </div>
-                                    <% } else { %>
-                                        <form method="POST"
-                                            action="/courses/<%= course._id %>/complete/<%= lesson.id %>">
-                                            <div class="lesson-submit-button" onclick="this.closest('form').submit()">
-                                                <%= lesson.id==="intro-1" ? "Start Course" : "Complete Lesson" %>
-                                            </div>
-                                        </form>
-                                        <% } %>
-                                            <% } else if (isCompleted && lesson.id==="intro-1" ) { %>
-                                                <p class="lesson-status lesson-status-ready"><strong>You're ready to
-                                                        begin Module 1!</strong></p>
-                                                <% } else if (isCompleted) { %>
-                                                    <p class="lesson-status lesson-status-complete"><strong>This lesson
-                                                            is already marked as complete.</strong></p>
-                                                    <% } %>
-                        </div>
+                                            <form method="GET"
+                                                action="/courses/<%= course._id %>/modules/<%= moduleId %>/lessons/<%= lesson.id %>/quiz?q=0">
+                                                <div class="quiz-button-wrapper">
+                                                    <div onclick="this.closest('form').submit()"
+                                                        class="lesson-quiz-button">
+                                                        <%= __('lesson.startQuiz') %>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                        <% } else { %>
+                                            <form method="POST"
+                                                action="/courses/<%= course._id %>/complete/<%= lesson.id %>">
+                                                <div class="lesson-submit-button"
+                                                    onclick="this.closest('form').submit()">
+                                                    <%= lesson.id==="intro-1" ? __('lesson.startCourse') :
+                                                        __('lesson.completeLesson') %>
+                                                </div>
+                                            </form>
+                                            <% } %>
+                                                <% } else if (isCompleted && lesson.id==="intro-1" ) { %>
+                                                    <p class="lesson-status lesson-status-ready">
+                                                        <strong>
+                                                            <%= __('lesson.readyForNext') %>
+                                                        </strong>
+                                                    </p>
+                                                    <% } else if (isCompleted) { %>
+                                                        <p class="lesson-status lesson-status-complete">
+                                                            <strong>
+                                                                <%= __('lesson.alreadyCompleted') %>
+                                                            </strong>
+                                                        </p>
+                                                        <% } %>
+                            </div>
     </section>

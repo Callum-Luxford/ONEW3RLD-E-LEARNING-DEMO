@@ -2,33 +2,31 @@
 
     <div class="quiz-result-card">
         <div class="quiz-result-header <%= score === total ? 'passed' : 'failed' %>">
-            <%= score===total ? 'Passed' : 'Failed' %>
+            <%= translations.quizResult[score===total ? 'passed' : 'failed' ] %>
         </div>
 
         <div class="quiz-result-body">
             <% if (score < total) { %>
                 <p class="result-message">
-                    You scored <%= score %> / <%= total %>. You need to answer all questions correctly to progress to
-                            the next Module
+                    <%= translations.quizResult.scoreFeedback .replace('{score}', score) .replace('{total}', total) %>
                 </p>
 
                 <div class="result-actions">
-                    <!-- <a href="/courses/<%= course._id %>/modules/<%= module.id %>/lessons/<%= lesson.id %>/review"
-                        class="btn btn-black">Review</a> -->
                     <form method="GET"
                         action="/courses/<%= course._id %>/modules/<%= module.id %>/lessons/<%= lesson.id %>/quiz">
                         <input type="hidden" name="q" value="0">
-                        <button type="submit" class="quiz-retake-btn">Retake <%= module.id %> Quiz</button>
+                        <button type="submit" class="quiz-retake-btn">
+                            <%= translations.quizResult.retakeButton.replace('{module}', module.id) %>
+                        </button>
                     </form>
                 </div>
 
                 <% } else { %>
                     <p class="result-message success">
-                        Congratulations! You passed the quiz and will now receive your certificate.
+                        <%= translations.quizResult.passedMessage %>
                     </p>
                     <% } %>
         </div>
     </div>
 
 </main>
-  

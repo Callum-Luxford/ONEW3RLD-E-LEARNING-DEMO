@@ -3,16 +3,20 @@
         <img src="/images/rsa-logo.png" alt="RSA UAE Logo" class="auth-logo">
 
         <form method="POST" action="/auth/register">
-            <input type="text" name="fullName" id="fullName" placeholder="Full Name" required />
-            <input type="text" name="email" placeholder="Email" required>
-            <input type="password" name="password" placeholder="Password" required>
+            <input type="text" name="fullName" id="fullName" placeholder="<%= __('auth.fullName') %>" required />
+            <input type="text" name="email" placeholder="<%= __('auth.email') %>" required>
+            <input type="password" name="password" placeholder="<%= __('auth.password') %>" required>
 
             <div class="auth-terms">
                 <input type="checkbox" id="terms" name="terms" required>
-                <label for="terms">Terms & Conditions</label>
+                <label for="terms">
+                    <%= __('auth.terms') %>
+                </label>
             </div>
 
-            <button type="submit" class="auth-submit-button">Register</button>
+            <button type="submit" class="auth-submit-button">
+                <%= __('auth.registerButton') %>
+            </button>
         </form>
 
         <!-- ADD LATER -->
@@ -20,6 +24,15 @@
             <i class="icon-camera"></i> Face Recognition
         </button> -->
 
-        <p class="change-auth-link">Already have an account? <a href="/auth/login">Login</a></p>
+        <p class="change-auth-link">
+            <%= __('auth.alreadyHaveAccount') %><a href="/auth/login">
+                    <%= __('auth.loginLink') %>
+                </a>
+        </p>
+
+        <div class="language-switcher">
+            <a href="/set-language/en" class="lang-btn"><img src="/icons/uk.png" alt="English" width="24" /></a>
+            <a href="/set-language/ar" class="lang-btn"><img src="/icons/uae.png" alt="Arabic" width="24" /></a>
+        </div>
     </div>
 </div>

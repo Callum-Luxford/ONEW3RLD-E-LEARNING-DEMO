@@ -2,31 +2,28 @@
 const User = require("../models/User");
 const Course = require("../models/Course");
 const { getCourseProgress } = require("../utils/courseProgressHelpers");
+const { localizeCourse } = require("../utils/localizationHelpers");
 
 exports.getDashboard = async (req, res) => {
   try {
     const user = await User.findById(req.user._id).populate("enrolledCourses");
 
-    console.log("User Progress:", user.progress);
+    const lang = req.getLocale();
+    const localizedCourses = user.enrolledCourses.map((course) =>
+      localizeCourse(course.toObject(), lang)
+    );
 
     const completedLessons = user.progress?.completedLessons || [];
 
-    const coursesWithProgress = user.enrolledCourses.map((course) => {
+    const coursesWithProgress = localizedCourses.map((course) => {
       const progress = getCourseProgress(course, user.progress);
 
       const hasCertificate = user.certificates?.some(
         (cert) => cert.courseId.toString() === course._id.toString()
       );
 
-      console.log("📊 Calculated Progress:", {
-        courseTitle: course.title,
-        totalLessons: progress.totalLessons,
-        completedLessons: progress.completedLessons,
-        percent: progress.progressPercent,
-      });
-
       return {
-        ...course.toObject(),
+        ...course,
         ...progress,
         hasCertificate,
       };

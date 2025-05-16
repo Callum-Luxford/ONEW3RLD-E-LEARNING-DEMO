@@ -1,21 +1,21 @@
 <main class="with-sidebar quiz-success-success-page">
-
     <section class="quiz-success-success-card">
-
         <div class="quiz-success-header">
             <h1 class="quiz-success-course-title">
-                <%= course.title %>
+                <%= course.title?.[lang] || course.title?.en || '' %>
             </h1>
         </div>
 
         <div class="quiz-success-message">
-            <p class="quiz-success-name"><strong>Hello <%= user.fullName %>,</strong></p>
+            <p class="quiz-success-name"><strong>
+                    <%= translations.success.hello %>
+                        <%= user.fullName %>,
+                </strong></p>
             <p class="quiz-success-info">
-                We congratulate you on completing the course and wish you great success in applying your new knowledge.
+                <%= translations.success.congrats %>
             </p>
             <p class="quiz-success-info">
-                If you’ve completed all the lessons in the course, you can obtain your certificate by downloading it
-                using the buttons below.
+                <%= translations.success.certificateInfo %>
             </p>
         </div>
 
@@ -24,15 +24,14 @@
                 <a href="/certificate/<%= course._id %>/download" class="quiz-success-btn">
                     <img src="/icons/certified.png" alt="">
                     <span>
-                        <%= course.title %>
+                        <%= course.title?.[lang] || course.title?.en || '' %>
                     </span>
                 </a>
             </div>
             <% } else { %>
-                <p class="quiz-success-warning">You must complete all lessons to unlock the certificate.</p>
+                <p class="quiz-success-warning">
+                    <%= translations.success.warning %>
+                </p>
                 <% } %>
-
     </section>
-
 </main>
-  

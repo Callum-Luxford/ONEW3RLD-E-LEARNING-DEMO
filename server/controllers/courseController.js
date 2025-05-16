@@ -5,11 +5,14 @@ const {
   getNextIncompleteLesson,
   attachCourseProgress,
 } = require("../utils/courseProgressHelpers");
+const { localizeCourse } = require("../utils/localizationHelpers");
 
 // viewCourse request: - render courses
 exports.viewCourse = async (req, res) => {
   try {
-    const course = await Course.findById(req.params.courseId);
+    const courseRaw = await Course.findById(req.params.courseId);
+    const lang = req.getLocale();
+    const course = localizeCourse(courseRaw.toObject(), lang);
     if (!course) return res.status(404).send("Course not found");
 
     const user = await User.findById(req.user._id);
@@ -50,12 +53,19 @@ exports.viewLesson = async (req, res) => {
   const { courseId, moduleId, lessonId } = req.params;
 
   try {
-    const course = await Course.findById(courseId);
+    const courseRaw = await Course.findById(courseId);
+    const lang = req.getLocale();
+    const course = localizeCourse(courseRaw.toObject(), lang);
     if (!course) return res.status(404).send("Course not found");
 
     const module = course.modules.find((mod) => mod.id === moduleId);
     const lesson = module?.lessons.find((les) => les.id === lessonId);
     if (!lesson) return res.status(404).send("Lesson not found");
+
+    // Ensure videoUrl is localized if missed by helper
+    if (lesson.videoUrl && typeof lesson.videoUrl === "object") {
+      lesson.videoUrl = lesson.videoUrl[lang] || lesson.videoUrl.en || "";
+    }
 
     const user = await User.findById(req.user._id);
     const userCourseProgress = user.progress.find((p) =>
@@ -64,7 +74,6 @@ exports.viewLesson = async (req, res) => {
 
     const completedLessons = userCourseProgress.completedLessons || [];
 
-    // Flatten all lessons to determine order
     const allLessons = course.modules.flatMap((m) => m.lessons);
     const currentIndex = allLessons.findIndex((l) => l.id === lesson.id);
     const isUnlocked =
@@ -83,6 +92,7 @@ exports.viewLesson = async (req, res) => {
     console.log("Current lesson:", lesson.id);
     console.log("Completed lessons:", completedLessons);
     console.log("Is completed:", isCompleted);
+    console.log("VIDEO:", lesson.videoUrl); // debug
 
     attachCourseProgress(course, user);
 
@@ -103,6 +113,7 @@ exports.viewLesson = async (req, res) => {
     res.status(500).send("Error loading lesson");
   }
 };
+
 
 // completeLesson - To check and push completed lesson to user progress
 exports.completeLesson = async (req, res) => {

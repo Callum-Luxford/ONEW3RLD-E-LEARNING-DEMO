@@ -12,7 +12,7 @@
                 <%= pageTitle %>
               </span></p>
             <% } else { %>
-              <p>Welcome <span>
+              <p><%= __('subheader.welcome') %><span>
                   <%= user?.fullName || user?.email || "Guest" %>,
                 </span></p>
               <% } %>
@@ -24,7 +24,7 @@
           <div class="subheader-progress-fill" data-progress="<%= course.progressPercent %>"></div>
         </div>
         <span class="subheader-progress-text">
-          Completed: <%= course.completedLessons %> / <%= course.totalLessons %>
+          <%= __('subheader.completedLabel') %> <%= course.completedLessons %> / <%= course.totalLessons %>
         </span>
       </div>
       <% } %>

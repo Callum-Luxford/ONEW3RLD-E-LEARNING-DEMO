@@ -1,0 +1,231 @@
+{
+  "_id": {
+    "$oid": "68271066b953cb54a6b7726a"
+  },
+  "title": {
+    "en": "UAE Responsible Service of Alcohol (RSA-UAE)",
+    "ar": "الخدمة المسؤولة للكحول في الإمارات العربية المتحدة (RSA-UAE)"
+  },
+  "subtitle": {
+    "en": "Nationally Accredited Unit of Competency",
+    "ar": "وحدة كفاءة معتمدة على المستوى الوطني"
+  },
+  "summary": {
+    "en": "Certified training course in the Responsible Service of Alcohol in the UAE, covering legal requirements, cultural considerations, and best practices for safe and compliant service.",
+    "ar": "دورة تدريبية معتمدة في الخدمة المسؤولة للكحول في الإمارات العربية المتحدة، تغطي المتطلبات القانونية، والاعتبارات الثقافية، وأفضل الممارسات لتقديم خدمة آمنة ومتوافقة."
+  },
+  "totalLessons": 3,
+  "modules": [
+    {
+      "id": "intro",
+      "title": {
+        "en": "Course Introduction",
+        "ar": "مقدمة الدورة"
+      },
+      "lessons": [
+        {
+          "id": "intro-1",
+          "title": {
+            "en": "How to Complete Each Module",
+            "ar": "كيفية إكمال كل وحدة"
+          },
+          "content": {
+            "en": "<ol>\n                          <li>Read through each lesson in the module carefully.</li>\n                          <li>At the end of the module, complete the quiz.</li>\n                          <li>Ensure all quiz questions are answered correctly to unlock the next module.</li>\n                          <li>Repeat this process for each module in the course.</li>\n                          <li>To receive your certification at the end, all modules must be completed with 100% accuracy on each quiz.</li>\n                        </ol>",
+            "ar": "<ol>\n  <li>اقرأ كل درس في الوحدة بعناية.</li>\n  <li>في نهاية الوحدة، أكمل الاختبار.</li>\n  <li>تأكد من الإجابة بشكل صحيح على جميع أسئلة الاختبار لفتح الوحدة التالية.</li>\n  <li>كرر هذه العملية لكل وحدة في الدورة.</li>\n  <li>للحصول على شهادة الإتمام، يجب إكمال جميع الوحدات بدقة 100٪ في كل اختبار.</li>\n</ol>"
+          },
+          "videoUrl": ""
+        }
+      ]
+    },
+    {
+      "id": "mod-1",
+      "title": {
+        "en": "Module 1: Introduction to UAE Liquor Laws and RSA",
+        "ar": "الوحدة 1: مقدمة في قوانين الكحول في الإمارات وRSA"
+      },
+      "lessons": [
+        {
+          "id": "1-1-1",
+          "title": {
+            "en": "1.1.1 History of RSA in the UAE",
+            "ar": "1.1.1 تاريخ RSA في الإمارات"
+          },
+          "content": {
+            "en": "<p>The UAE has developed strict regulations over the years to control the sale and consumption of alcohol, reflecting the country’s respect for cultural norms, religious values, and public safety.</p>\n                        <p>Key milestones include:</p>\n                        <ul>\n                          <li>Laws mandating strict licensing for alcohol-selling venues</li>\n                          <li>Age verification protocols</li>\n                          <li>Penalties for non-compliance to maintain public safety</li>\n                        </ul>\n                        <p>The concept of \"harm minimization\" aligns with the UAE’s goal of ensuring alcohol-related activities do not compromise community safety and well-being.</p>",
+            "ar": "<p>لقد طورت دولة الإمارات العربية المتحدة على مر السنين لوائح صارمة للتحكم في بيع واستهلاك الكحول، مما يعكس احترام البلاد للمعايير الثقافية والقيم الدينية والسلامة العامة.</p>\n<p>تشمل الإنجازات الرئيسية:</p>\n<ul>\n  <li>قوانين تفرض تراخيص صارمة للأماكن التي تبيع الكحول</li>\n  <li>بروتوكولات التحقق من العمر</li>\n  <li>عقوبات على عدم الامتثال للحفاظ على السلامة العامة</li>\n</ul>\n<p>يتماشى مفهوم \"تقليل الضرر\" مع هدف دولة الإمارات في ضمان ألا تؤثر الأنشطة المتعلقة بالكحول على سلامة المجتمع ورفاهيته.</p>"
+          },
+          "videoUrl": {
+            "en": "/videos/rsa-video-en.mp4",
+            "ar": "/videos/rsa-video-ar.mp4"
+          }
+        },
+        {
+          "id": "1-1-2",
+          "title": {
+            "en": "1.1.2 Meaning of RSA",
+            "ar": "1.1.2 معنى RSA"
+          },
+          "content": {
+            "en": "<p>Responsible Service of Alcohol (RSA) in the UAE means conducting the sale, service, and supply of alcohol in a responsible and lawful manner that aligns with local regulations and cultural sensitivities.</p>\n                        <p>RSA practices aim to prevent intoxication, underage drinking, and behaviour that could disrupt public order or contradict religious principles.</p>\n                        <p>RSA training helps staff understand their legal responsibilities, manage customer interactions effectively, and maintain a safe, respectful environment in establishments where alcohol is served.</p>",
+            "ar": "<p>تعني الخدمة المسؤولة للكحول (RSA) في دولة الإمارات إجراء بيع وتقديم وتوزيع الكحول بطريقة مسؤولة وقانونية تتماشى مع اللوائح المحلية والحساسيات الثقافية.</p>\n<p>تهدف ممارسات RSA إلى منع التسمم، وشرب القُصر للكحول، والسلوكيات التي قد تعطل النظام العام أو تتعارض مع المبادئ الدينية.</p>\n<p>تساعد تدريبات RSA الموظفين على فهم مسؤولياتهم القانونية، والتعامل مع العملاء بفعالية، والحفاظ على بيئة آمنة ومحترمة في الأماكن التي يتم فيها تقديم الكحول.</p>"
+          },
+          "videoUrl": ""
+        },
+        {
+          "id": "1-1-3",
+          "title": {
+            "en": "1.1.3 How Does RSA Help?",
+            "ar": "1.1.3 كيف تساعد RSA؟"
+          },
+          "content": {
+            "en": "<p>RSA training offers significant benefits to frontline staff, businesses, customers, and the wider community.</p>\n                        <p>For staff, RSA provides the knowledge and tools needed to serve alcohol responsibly, reducing the risk of incidents involving intoxicated or underage patrons.</p>\n                        <p>This training also supports businesses by ensuring compliance with UAE laws, helping them avoid fines and protecting their reputation.</p>\n                        <p>For the community, RSA practices contribute to public safety and social harmony. By promoting responsible service, venues can prevent incidents of public intoxication, disturbances, and behaviors that violate cultural and religious norms.</p>",
+            "ar": "<p>توفر تدريبات RSA فوائد كبيرة للموظفين في الخطوط الأمامية، والشركات، والعملاء، والمجتمع الأوسع.</p>\n<p>بالنسبة للموظفين، توفر RSA المعرفة والأدوات اللازمة لتقديم الكحول بشكل مسؤول، مما يقلل من خطر الحوادث المرتبطة بالتسمم أو تقديم الكحول للقُصر.</p>\n<p>كما تدعم هذه التدريبات الشركات من خلال ضمان الامتثال لقوانين دولة الإمارات، مما يساعد على تجنب الغرامات وحماية السمعة.</p>\n<p>وبالنسبة للمجتمع، تساهم ممارسات RSA في السلامة العامة والوئام الاجتماعي. من خلال تعزيز الخدمة المسؤولة، يمكن للأماكن تجنب حوادث التسمم، والاضطرابات، والسلوكيات التي تنتهك الأعراف الثقافية والدينية.</p>"
+          },
+          "videoUrl": ""
+        },
+        {
+          "id": "1-1-quiz",
+          "title": {
+            "en": "Module 1.1 Quiz",
+            "ar": "اختبار الوحدة 1.1"
+          },
+          "content": {
+            "en": "",
+            "ar": ""
+          },
+          "videoUrl": "",
+          "quiz": {
+            "questions": [
+              {
+                "question": {
+                  "en": "What is the main objective of RSA in the UAE?",
+                  "ar": "ما هو الهدف الرئيسي من RSA في الإمارات العربية المتحدة؟"
+                },
+                "options": [
+                  {
+                    "en": "To ensure alcohol-related activities do not compromise safety and well-being",
+                    "ar": "ضمان أن الأنشطة المتعلقة بالكحول لا تؤثر على السلامة والرفاهية"
+                  },
+                  {
+                    "en": "To promote alcohol consumption",
+                    "ar": "تشجيع استهلاك الكحول"
+                  },
+                  {
+                    "en": "To ban all alcohol sales in the UAE",
+                    "ar": "حظر جميع مبيعات الكحول في الإمارات"
+                  }
+                ],
+                "answerIndex": [0]
+              },
+              {
+                "question": {
+                  "en": "Which of the following are significant milestones in the history of RSA regulations in the UAE? (Select all that apply)",
+                  "ar": "أي من التالي يُعتبر من الإنجازات الرئيسية في تاريخ تنظيم RSA في الإمارات؟ (اختر كل ما ينطبق)"
+                },
+                "options": [
+                  {
+                    "en": "Laws mandating strict licensing for alcohol-selling venues",
+                    "ar": "قوانين تفرض تراخيص صارمة لأماكن بيع الكحول"
+                  },
+                  {
+                    "en": "Penalties for non-compliance to maintain public safety",
+                    "ar": "عقوبات لعدم الامتثال للحفاظ على السلامة العامة"
+                  },
+                  {
+                    "en": "Encouraging alcohol consumption among youth",
+                    "ar": "تشجيع استهلاك الكحول بين الشباب"
+                  }
+                ],
+                "answerIndex": [0, 1]
+              },
+              {
+                "question": {
+                  "en": "Which of the following is a requirement for alcohol-selling venues in the UAE under RSA regulations? (Select all that apply)",
+                  "ar": "ما هي المتطلبات لأماكن بيع الكحول في الإمارات بموجب لوائح RSA؟ (اختر كل ما ينطبق)"
+                },
+                "options": [
+                  {
+                    "en": "Strict licensing",
+                    "ar": "تراخيص صارمة"
+                  },
+                  {
+                    "en": "Age verification protocols",
+                    "ar": "بروتوكولات التحقق من العمر"
+                  },
+                  {
+                    "en": "No dress code required",
+                    "ar": "لا حاجة إلى قواعد للزي"
+                  },
+                  {
+                    "en": "Free alcohol days",
+                    "ar": "أيام تقدم فيها الكحول مجانًا"
+                  }
+                ],
+                "answerIndex": [0, 1]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "mod-2",
+      "title": {
+        "en": "Module 2: UAE Alcohol Regulations",
+        "ar": "الوحدة 2: قوانين تنظيم الكحول في الإمارات"
+      },
+      "lessons": [
+        {
+          "id": "locked-2-1",
+          "title": {
+            "en": "This module is currently locked",
+            "ar": "تم قفل هذه الوحدة حالياً"
+          },
+          "content": {
+            "en": "<p>This module will be unlocked after successfully completing Module 1. It covers UAE alcohol licensing laws, restrictions, and requirements.</p>",
+            "ar": "<p>سيتم فتح هذه الوحدة بعد إتمام الوحدة الأولى بنجاح. وهي تغطي قوانين تراخيص الكحول، والقيود، والمتطلبات في الإمارات العربية المتحدة.</p>"
+          },
+          "videoUrl": ""
+        }
+      ],
+      "isDemoOnly": true
+    },
+    {
+      "id": "mod-3",
+      "title": {
+        "en": "Module 3: Customer Assessment and Refusal of Service",
+        "ar": "الوحدة 3: تقييم العملاء ورفض الخدمة"
+      },
+      "lessons": [
+        {
+          "id": "locked-3-1",
+          "title": {
+            "en": "This module is currently locked",
+            "ar": "تم قفل هذه الوحدة حالياً"
+          },
+          "content": {
+            "en": "<p>This module will be unlocked after completing prior modules. It focuses on how to assess customer intoxication and safely refuse service when necessary.</p>",
+            "ar": "<p>سيتم فتح هذه الوحدة بعد إكمال الوحدات السابقة. وتركز على كيفية تقييم حالة التسمم لدى العملاء ورفض تقديم الخدمة بأمان عند الضرورة.</p>"
+          },
+          "videoUrl": ""
+        }
+      ],
+      "isDemoOnly": true
+    }
+  ],
+  "createdAt": "2025-05-06T07:23:19.463540",
+  "successMessage": {
+    "body": {
+      "en": "You've successfully completed the course.",
+      "ar": "لقد أكملت الدورة بنجاح."
+    },
+    "downloadLabel": {
+      "en": "Download Your Certificate",
+      "ar": "تحميل الشهادة"
+    },
+    "heading": {
+      "en": "Congratulations {{name}}!",
+      "ar": "تهانينا {{name}}!"
+    }
+  }
+}

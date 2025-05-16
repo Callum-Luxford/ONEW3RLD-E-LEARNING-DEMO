@@ -7,7 +7,11 @@
                 <img class="header-icon search-icon" src="/icons/search.png" alt="search">
              -->
 
-            <img class="header-icon flag-icon" src="/icons/uk.png" alt="Language English">
+            <!-- Language toggle flags -->
+            <div class="language-switcher nav-small">
+                <a href="/set-language/en" class="lang-btn"><img src="/icons/uk.png" alt="English" width="24" /></a>
+                <a href="/set-language/ar" class="lang-btn"><img src="/icons/uae.png" alt="Arabic" width="24" /></a>
+            </div>
 
             <div id="menuToggle" class="menu-toggle">
                 <img id="menuIcon" src="/icons/burger-menu.png" alt="menu button">
@@ -20,9 +24,15 @@
     <!-- Overlay nav -->
     <nav id="mobileNavOverlay" class="nav-overlay">
         <div class="nav-links">
-            <a href="/dashboard" class="nav-link <%= currentRoute === '/dashboard' ? 'active' : '' %>">Dashboard</a>
-            <a href="/courses/list" class="nav-link <%= currentRoute === '/courses/list' ? 'active' : '' %>">Courses</a>
-            <a href="/auth/logout">Logout</a>
+            <a href="/dashboard" class="nav-link <%= currentRoute === '/dashboard' ? 'active' : '' %>">
+                <%= __('nav.dashboard') %>
+            </a>
+            <a href="/courses/list" class="nav-link <%= currentRoute === '/courses/list' ? 'active' : '' %>">
+                <%= __('nav.courses') %>
+            </a>
+            <a href="/auth/logout">
+                <%= __('nav.logout') %>
+            </a>
         </div>
     </nav>
 

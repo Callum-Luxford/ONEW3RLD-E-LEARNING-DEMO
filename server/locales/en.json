@@ -1,0 +1,69 @@
+{
+  "auth": {
+    "fullName": "Full Name",
+    "email": "Email",
+    "password": "Password",
+    "terms": "Terms & Conditions",
+    "registerButton": "Register",
+    "loginButton": "Login",
+    "alreadyHaveAccount": "Already have an account?",
+    "dontHaveAccount": "Don't have an account?",
+    "loginLink": "Login",
+    "registerLink": "Register"
+  },
+  "nav": {
+    "dashboard": "Dashboard",
+    "courses": "Courses",
+    "logout": "Logout"
+  },
+  "subheader": {
+    "welcome": "Welcome",
+    "completedLabel": "Completed:"
+  },
+  "dashboard": {
+    "cardBadge": "Course",
+    "cardProgress": "Completed",
+    "noCourses": "No courses enrolled yet.",
+    "downloadCertificate": "Download Certificate",
+    "viewCourse": "View Course",
+    "infoAlt": "Course Info"
+  },
+  "courseMarket": {
+    "enroll": "Enroll",
+    "enrolled": "Enrolled",
+    "courseBadge": "Course"
+  },
+  "lesson": {
+    "play": "Play",
+    "quizIntro": "This quiz consists of {{count}} questions.",
+    "quizInstruction": "Get all questions correct to progress to the next module.",
+    "startQuiz": "Start Quiz",
+    "startCourse": "Start Course",
+    "completeLesson": "Complete Lesson",
+    "readyForNext": "You're ready to begin Module 1!",
+    "alreadyCompleted": "This lesson is already marked as complete.",
+    "selectLesson": "Select a lesson from the sidebar to begin."
+  },
+  "quiz": {
+    "question": "Question",
+    "instruction": "Answer all questions correctly to complete the module.",
+    "next": "Next Question",
+    "submit": "Submit Quiz"
+  },
+  "success": {
+    "hello": "Hello",
+    "congrats": "We congratulate you on completing the course and wish you great success in applying your new knowledge.",
+    "certificateInfo": "If you’ve completed all the lessons in the course, you can obtain your certificate by downloading it using the buttons below.",
+    "warning": "You must complete all lessons to unlock the certificate."
+  },
+  "quizResult": {
+    "passed": "Passed",
+    "failed": "Failed",
+    "scoreFeedback": "You scored {score} / {total}. You need to answer all questions correctly to progress to the next Module",
+    "retakeButton": "Retake {module} Quiz",
+    "passedMessage": "Congratulations! You passed the quiz and will now receive your certificate."
+  },
+  "footer": {
+    "poweredBy": "Powered by ONEW3RLD"
+  }
+}

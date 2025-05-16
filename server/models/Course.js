@@ -2,10 +2,15 @@
 const mongoose = require("mongoose");
 
 const courseSchema = new mongoose.Schema({
-  title: { type: String, required: true },
-  description: String,
+  title: {
+    en: { type: String, required: true },
+    ar: { type: String },
+  },
+  description: {
+    en: { type: String },
+    ar: { type: String },
+  },
 
-  // Success message content (optional but scalable)
   successMessage: {
     heading: { type: String, default: "Congratulations {{name}}!" },
     body: {
@@ -18,7 +23,10 @@ const courseSchema = new mongoose.Schema({
   modules: [
     {
       id: String,
-      title: String,
+      title: {
+        en: { type: String },
+        ar: { type: String },
+      },
       isDemoOnly: {
         type: Boolean,
         default: false,
@@ -26,14 +34,31 @@ const courseSchema = new mongoose.Schema({
       lessons: [
         {
           id: String,
-          title: String,
-          content: String,
-          videoUrl: String,
+          title: {
+            en: { type: String },
+            ar: { type: String },
+          },
+          content: {
+            en: { type: String },
+            ar: { type: String },
+          },
+          videoUrl: {
+            en: { type: String },
+            ar: { type: String },
+          },
           quiz: {
             questions: [
               {
-                question: String,
-                options: [String],
+                question: {
+                  en: { type: String },
+                  ar: { type: String },
+                },
+                options: [
+                  {
+                    en: String,
+                    ar: String,
+                  },
+                ],
                 answerIndex: [Number],
               },
             ],

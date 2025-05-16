@@ -1,5 +1,3 @@
-// certificateController.js
-
 const fs = require("fs");
 const path = require("path");
 const Course = require("../../models/Course");
@@ -15,8 +13,8 @@ exports.generateCertificate = async (req, res) => {
     const course = await Course.findById(courseId);
     const user = await User.findById(userId);
 
-    console.log("🔍 Checking certificate for user:", userId);
-    console.log("🔍 Requested courseId:", courseId);
+    console.log("Checking certificate for user:", userId);
+    console.log("Requested courseId:", courseId);
     const existingCert = user.certificates.find(
       (c) => c.courseId.toString() === courseId.toString()
     );
@@ -27,13 +25,21 @@ exports.generateCertificate = async (req, res) => {
         "../../",
         existingCert.filePath.replace(/^\/+/, "")
       );
-      console.log("📄 Checking existing cert file:", certFile);
+      console.log("Checking existing cert file:", certFile);
 
       if (fs.existsSync(certFile)) {
         console.log("Serving existing certificate");
         return res.download(certFile);
       } else {
-        console.log("DB record found but file is missing");
+        console.log(
+          "DB record found but file is missing — removing ghost record"
+        );
+        // 🔧 Auto-heal: remove the broken record
+        user.certificates = user.certificates.filter(
+          (c) => c.courseId.toString() !== courseId.toString()
+        );
+        await user.save();
+        // Will fall through to regenerate below
       }
     }
 

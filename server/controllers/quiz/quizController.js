@@ -11,38 +11,57 @@ const {
 
 // renderQuiz - Render the quiz page
 exports.renderQuiz = async (req, res) => {
-  const { courseId, moduleId, lessonId } = req.params;
-  const questionIndex = parseInt(req.query.q || "0", 10);
-
   try {
+    const lang = req.getLocale() || "en";
+
+    const courseId = req.params.courseId;
+    const moduleId = req.params.moduleId;
+    const lessonId = req.params.lessonId;
+    const questionIndex = parseInt(req.query.question || 0);
+
     const course = await Course.findById(courseId);
-    const lesson = findLesson(course, moduleId, lessonId);
-    const questions = lesson.quiz?.questions || [];
+    if (!course) throw new Error("Course not found");
 
-    initSession(req);
+    const { localizeCourse } = require("../../utils/localizationHelpers");
+    const localizedCourse = localizeCourse(course, lang);
 
-    const currentQuestion = questions[questionIndex];
-    if (!currentQuestion) return res.status(404).send("Question not found.");
+    const localizedModule = localizedCourse.modules?.find(
+      (m) => m.id === moduleId
+    );
+    if (!localizedModule)
+      throw new Error(`Module ${moduleId} not found in localized course`);
+
+    const localizedLesson = localizedModule.lessons?.find(
+      (l) => l.id === lessonId
+    );
+    if (!localizedLesson)
+      throw new Error(`Lesson ${lessonId} not found in module ${moduleId}`);
+
+    const currentQuestion = localizedLesson.quiz.questions[questionIndex];
+
+    const translations = require(`../../locales/${lang}.json`);
 
     res.render("quizzes/quiz", {
-      title: `${course.title} - ${lesson.title}`,
-      pageTitle: lesson.title,
-      course,
-      module: course.modules.find((mod) => mod.id === moduleId),
-      lesson,
-      currentLesson: lesson,
+      title: `${localizedCourse.title} - ${localizedLesson.title}`,
+      pageTitle: localizedLesson.title,
+      course: localizedCourse,
+      module: localizedModule,
+      lesson: localizedLesson,
+      currentLesson: localizedLesson,
       question: currentQuestion,
       questionIndex,
-      totalQuestions: questions.length,
-      userAnswers: req.session.userAnswers,
-      user: req.user, // needed for subheader/sidebar
-      pageStyles: ["quiz.css", "sidebar.css"], // includes sidebar style
+      totalQuestions: localizedLesson.quiz.questions.length,
+      userAnswers: (req.session && req.session.userAnswers) || [],
+      user: req.user,
+      pageStyles: ["quiz.css", "sidebar.css"],
       pageScripts: ["courseSidebar.js"],
-      showSidebarToggle: true, // needed for sidebar toggle
+      showSidebarToggle: true,
+      lang,
+      translations,
     });
   } catch (err) {
     console.error("Quiz load error:", err);
-    res.status(500).send("Could not load quiz.");
+    res.status(500).send("Error loading quiz.");
   }
 };
 
@@ -50,6 +69,8 @@ exports.renderQuiz = async (req, res) => {
 // submitQuiz - Quiz submission
 exports.submitQuiz = async (req, res) => {
   const { courseId, moduleId, lessonId } = req.params;
+  const lang = req.cookies.lang || "en";
+  const translations = require(`../../locales/${lang}.json`);
 
   try {
     const course = await Course.findById(courseId);
@@ -93,7 +114,7 @@ exports.submitQuiz = async (req, res) => {
 
       await user.save();
 
-      // ✅ Auto-generate certificate on success
+      // Auto-generate certificate on success
       const { createCertificatePDF } = require("../../utils/pdfGenerator");
       const existingCert = user.certificates.find(
         (c) => c.courseId.toString() === courseId.toString()
@@ -137,6 +158,8 @@ exports.submitQuiz = async (req, res) => {
       pageStyles: ["quiz.css", "sidebar.css", "quiz-result.css"],
       pageScripts: ["courseSidebar.js"],
       showSidebarToggle: true,
+      translations,
+      lang,
     });
   } catch (err) {
     console.error("Quiz submission failed:", err);

@@ -1,0 +1,69 @@
+{
+  "auth": {
+    "fullName": "الاسم الكامل",
+    "email": "البريد الإلكتروني",
+    "password": "كلمة المرور",
+    "terms": "الشروط والأحكام",
+    "registerButton": "إنشاء حساب",
+    "loginButton": "تسجيل الدخول",
+    "alreadyHaveAccount": "هل لديك حساب؟",
+    "dontHaveAccount": "ليس لديك حساب؟",
+    "loginLink": "تسجيل الدخول",
+    "registerLink": "إنشاء حساب"
+  },
+  "nav": {
+    "dashboard": "لوحة التحكم",
+    "courses": "الدورات",
+    "logout": "تسجيل الخروج"
+  },
+  "subheader": {
+    "welcome": "مرحباً",
+    "completedLabel": "مكتمل:"
+  },
+  "dashboard": {
+    "cardBadge": "دورة",
+    "cardProgress": "تم الإكمال",
+    "noCourses": "لم يتم التسجيل في أي دورات بعد.",
+    "downloadCertificate": "تحميل الشهادة",
+    "viewCourse": "عرض الدورة",
+    "infoAlt": "معلومات الدورة"
+  },
+  "courseMarket": {
+    "enroll": "التسجيل",
+    "enrolled": "مسجل",
+    "courseBadge": "دورة"
+  },
+  "lesson": {
+    "play": "تشغيل",
+    "quizIntro": "يتكون هذا الاختبار من {{count}} سؤال.",
+    "quizInstruction": "أجب على جميع الأسئلة بشكل صحيح للتقدم إلى الوحدة التالية.",
+    "startQuiz": "ابدأ الاختبار",
+    "startCourse": "ابدأ الدورة",
+    "completeLesson": "أكمل الدرس",
+    "readyForNext": "أنت جاهز لبدء الوحدة 1!",
+    "alreadyCompleted": "تم وضع علامة على هذا الدرس كمكتمل بالفعل.",
+    "selectLesson": "اختر درسًا من الشريط الجانبي للبدء."
+  },
+  "quiz": {
+    "question": "السؤال",
+    "instruction": "أجب على جميع الأسئلة بشكل صحيح لإكمال الوحدة.",
+    "next": "السؤال التالي",
+    "submit": "إرسال الاختبار"
+  },
+  "success": {
+    "hello": "مرحبًا",
+    "congrats": "نهنئك على إكمال الدورة ونتمنى لك التوفيق في تطبيق معرفتك الجديدة.",
+    "certificateInfo": "إذا أكملت جميع دروس الدورة، يمكنك الحصول على شهادتك من خلال تنزيلها باستخدام الأزرار أدناه.",
+    "warning": "يجب إكمال جميع الدروس لفتح الشهادة."
+  },
+  "quizResult": {
+    "passed": "ناجح",
+    "failed": "راسب",
+    "scoreFeedback": "لقد حصلت على {score} / {total}. يجب عليك الإجابة على جميع الأسئلة بشكل صحيح للانتقال إلى الوحدة التالية",
+    "retakeButton": "إعادة اختبار {module}",
+    "passedMessage": "تهانينا! لقد اجتزت الاختبار وستتلقى الآن شهادتك."
+  },
+  "footer": {
+    "poweredBy": "بدعم من ONEW3RLD"
+  }
+}

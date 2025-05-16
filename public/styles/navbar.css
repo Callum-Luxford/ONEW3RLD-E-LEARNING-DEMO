@@ -174,3 +174,16 @@
     box-shadow: 0 0 12px rgba(255, 215, 0, 0.6);
     border: 1px solid var(--theme-clr-2);
 }
+
+
+
+/* === LANGUAGE SWITCHER === */
+/* Smaller icons for nav bar */
+.language-switcher.nav-small .lang-btn img {
+    width: 30px;
+}
+
+.language-switcher.nav-small .lang-pulse {
+    width: 30px;
+    height: 30px;
+}

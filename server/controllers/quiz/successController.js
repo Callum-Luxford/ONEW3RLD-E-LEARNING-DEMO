@@ -24,17 +24,23 @@ exports.renderSuccessPage = async (req, res) => {
     const hasCompletedCourse =
       progress && progress.completedLessons.includes("1-1-quiz");
 
+    const lang = req.cookies.lang || "en";
+    const translations = require(`../../locales/${lang}.json`);
+
     res.render("quizzes/success", {
       title: "Course Complete",
       course,
       user,
+      lang,
+      translations,
       pageTitle: "Course Completed",
       showSidebarToggle: true,
-      currentLesson: null, // optional depending on your sidebar logic
+      currentLesson: null,
       pageStyles: ["sidebar.css", "quiz.css", "quiz-result.css"],
       pageScripts: ["courseSidebar.js"],
       hasCompletedCourse,
     });
+    
   } catch (err) {
     console.error("Success page error:", err);
     res.status(500).send("Error loading success page.");

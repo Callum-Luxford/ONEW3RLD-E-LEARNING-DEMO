@@ -37,3 +37,56 @@ body {
         /* to account for fixed nav */
     }
 }
+
+
+
+
+
+/* === GLOBAL STYLE LANG-BTNs === */
+.language-switcher {
+    display: flex;
+    gap: 1rem;
+}
+
+.language-switcher .lang-btn {
+    position: relative;
+    display: inline-block;
+    border-radius: 50%;
+}
+
+.language-switcher .lang-btn img {
+    width: 45px;
+    border-radius: 50%;
+    display: block;
+    position: relative;
+    z-index: 1;
+}
+
+/* Pulse element (injected dynamically) */
+.lang-pulse {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 45px;
+    height: 45px;
+    background: white;
+    opacity: 0.4;
+    border-radius: 50%;
+    transform: scale(1);
+    pointer-events: none;
+    animation: lang-click-pulse 0.6s ease-out forwards;
+    z-index: 0;
+    box-shadow: 0 0 6px rgba(255, 255, 255, 0.2);
+}
+
+@keyframes lang-click-pulse {
+    0% {
+        transform: scale(1);
+        opacity: 0.4;
+    }
+
+    100% {
+        transform: scale(1.5);
+        opacity: 0;
+    }
+}
