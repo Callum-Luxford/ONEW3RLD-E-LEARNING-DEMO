@@ -15,8 +15,13 @@ exports.generateCertificate = async (req, res) => {
 
     console.log("Checking certificate for user:", userId);
     console.log("Requested courseId:", courseId);
+
+    const lang = req.cookies?.lang || "en";
+
     const existingCert = user.certificates.find(
-      (c) => c.courseId.toString() === courseId.toString()
+      (c) =>
+        c.courseId.toString() === courseId.toString() &&
+        c.filePath.endsWith(`-${lang}.pdf`)
     );
 
     if (existingCert) {
@@ -75,8 +80,32 @@ exports.generateCertificate = async (req, res) => {
 };
 
 // QR Certificate Verification Controller
-exports.verifyCertificate = async (req, res) => {
+// exports.verifyCertificate = async (req, res) => {
+//   const { certId } = req.params;
+
+//   const user = await User.findOne({ "certificates.certId": certId });
+//   if (!user) return res.status(404).send("Certificate not found");
+
+//   const cert = user.certificates.find((c) => c.certId === certId);
+//   const course = await Course.findById(cert.courseId);
+
+//   res.render("quizzes/verify", {
+//     title: "Verify Certificate",
+//     fullName: user.fullName,
+//     courseTitle: course.title,
+//     issuedAt: cert.issuedAt.toLocaleDateString(),
+//     certId: cert.certId,
+//   });
+// };
+
+// QR Certificate Verification Controller 2
+const {
+  generateVerifiedCertificatePDF,
+} = require("../../utils/verifyCertificatePDF");
+
+exports.renderVerifiedCertificatePDF = async (req, res) => {
   const { certId } = req.params;
+  const lang = req.cookies?.lang || "en";
 
   const user = await User.findOne({ "certificates.certId": certId });
   if (!user) return res.status(404).send("Certificate not found");
@@ -84,11 +113,12 @@ exports.verifyCertificate = async (req, res) => {
   const cert = user.certificates.find((c) => c.certId === certId);
   const course = await Course.findById(cert.courseId);
 
-  res.render("quizzes/verify", {
-    title: "Verify Certificate",
-    fullName: user.fullName,
-    courseTitle: course.title,
-    issuedAt: cert.issuedAt.toLocaleDateString(),
-    certId: cert.certId,
-  });
+  const pdfPath = await generateVerifiedCertificatePDF(
+    user,
+    course,
+    cert,
+    lang
+  );
+
+  res.sendFile(pdfPath);
 };

@@ -9,12 +9,15 @@
 
           <% if (pageTitle) { %>
             <p><span>
-                <%= pageTitle %>
+                <%= typeof pageTitle==='object' ? pageTitle[lang] || pageTitle.en : pageTitle || __('subheader.welcome')
+                  %>
               </span></p>
             <% } else { %>
-              <p><%= __('subheader.welcome') %><span>
-                  <%= user?.fullName || user?.email || "Guest" %>,
-                </span></p>
+              <p>
+                <%= __('subheader.welcome') %><span>
+                    <%= user?.fullName || user?.email || "Guest" %>
+                  </span>
+              </p>
               <% } %>
     </div>
 
@@ -24,7 +27,8 @@
           <div class="subheader-progress-fill" data-progress="<%= course.progressPercent %>"></div>
         </div>
         <span class="subheader-progress-text">
-          <%= __('subheader.completedLabel') %> <%= course.completedLessons %> / <%= course.totalLessons %>
+          <%= __('subheader.completedLabel') %>
+            <%= course.completedLessons %> / <%= course.totalLessons %>
         </span>
       </div>
       <% } %>

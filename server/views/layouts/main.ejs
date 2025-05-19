@@ -23,7 +23,9 @@
                 <% } %>
 </head>
 
-<body class="layout-wrapper">
+<body
+    class="layout-wrapper <%= lang === 'ar' && !(typeof isAuthPage !== 'undefined' && isAuthPage) ? 'lang-ar' : '' %>">
+
     <% if (typeof hideNavbar==='undefined' || !hideNavbar) { %>
         <%- include('../partials/navbar.ejs') %>
             <% } %>

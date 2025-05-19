@@ -90,3 +90,17 @@ body {
         opacity: 0;
     }
 }
+
+
+
+
+/* === GLOBAL RTL === */
+/* === GLOBAL RTL via class === */
+.lang-ar {
+    font-family: 'Cairo', sans-serif;
+}
+
+.lang-ar :is(h1, h2, h3, h4, h5, h6, p, label, span, li, td, th) {
+    direction: rtl;
+    text-align: right;
+}

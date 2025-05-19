@@ -12,6 +12,7 @@ exports.getRegister = (req, res) => {
     hideSubheader: true,
     noWrapper: true,
     pageStyles: ["auth.css"],
+    isAuthPage: true,
   });
 };
 
@@ -49,6 +50,7 @@ exports.getLogin = (req, res) => {
     hideSubheader: true,
     noWrapper: true,
     pageStyles: ["auth.css"],
+    isAuthPage: true,
   });
 };
 

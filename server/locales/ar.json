@@ -18,7 +18,8 @@
   },
   "subheader": {
     "welcome": "مرحباً",
-    "completedLabel": "مكتمل:"
+    "completedLabel": "مكتمل:",
+    "courses": "الدورات"
   },
   "dashboard": {
     "cardBadge": "دورة",
@@ -43,6 +44,9 @@
     "readyForNext": "أنت جاهز لبدء الوحدة 1!",
     "alreadyCompleted": "تم وضع علامة على هذا الدرس كمكتمل بالفعل.",
     "selectLesson": "اختر درسًا من الشريط الجانبي للبدء."
+  },
+  "course": {
+    "completed": "اكتمل المقرر"
   },
   "quiz": {
     "question": "السؤال",

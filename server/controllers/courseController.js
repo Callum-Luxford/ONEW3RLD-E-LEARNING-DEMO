@@ -114,7 +114,6 @@ exports.viewLesson = async (req, res) => {
   }
 };
 
-
 // completeLesson - To check and push completed lesson to user progress
 exports.completeLesson = async (req, res) => {
   const { courseId, lessonId } = req.params;
@@ -193,6 +192,7 @@ exports.showAllCourses = async (req, res) => {
       pageTitle: "Courses",
       pageStyles: ["courseMarket.css"],
       pageScripts: [""],
+      pageTitle: req.__("subheader.courses"),
     });
   } catch (err) {
     console.error("Error loading course list:", err);

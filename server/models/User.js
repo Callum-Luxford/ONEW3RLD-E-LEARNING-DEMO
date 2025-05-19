@@ -26,7 +26,7 @@ const userSchema = new mongoose.Schema({
       courseId: { type: mongoose.Schema.Types.ObjectId, ref: "Course" },
       filePath: String, // e.g. '/certificates/userId-courseId.pdf'
       issuedAt: { type: Date, default: Date.now },
-      certificateId: String, // UUID or unique hash
+      certId: String, // UUID or unique hash
     },
   ],
   createdAt: { type: Date, default: Date.now },

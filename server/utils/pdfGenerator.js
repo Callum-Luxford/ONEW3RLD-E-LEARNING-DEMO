@@ -4,16 +4,26 @@ const fs = require("fs");
 const QRCode = require("qrcode");
 
 async function createCertificatePDF(user, course, certId, req) {
+  const lang = req.cookies?.lang || "en";
+  const __ = req.__.bind(req); // scoped translator
+
   const certDir = path.join(__dirname, "../certificates");
   if (!fs.existsSync(certDir)) fs.mkdirSync(certDir);
 
-  const fileName = `${user._id}-${certId}.pdf`;
+  const fileName = `${user._id}-${certId}-${lang}.pdf`;
   const certPath = path.join(certDir, fileName);
   const doc = new PDFDocument({ size: "A4", layout: "portrait", margin: 0 });
+
   const stream = fs.createWriteStream(certPath);
   doc.pipe(stream);
 
-  const bgPath = path.join(__dirname, "../templates/certificate-bg.png");
+  const backgroundPath =
+    lang === "ar"
+      ? "templates/certificate-bg-ar.png"
+      : "templates/certificate-bg.png";
+
+  const bgPath = path.join(__dirname, "..", backgroundPath);
+
   if (fs.existsSync(bgPath)) {
     doc.image(bgPath, 0, 0, {
       width: doc.page.width,
@@ -21,15 +31,28 @@ async function createCertificatePDF(user, course, certId, req) {
     });
   }
 
-  doc.fillColor("white").font("Helvetica-Bold");
+  const fontPath = path.join(__dirname, "../fonts/Cairo-Regular.ttf");
+
+  doc.fillColor("white");
+
+  if (lang === "ar") {
+    doc.font(fontPath); // ✅ Arabic-safe font
+  } else {
+    doc.font("Helvetica-Bold"); // ✅ Default English
+  }
 
   const issuedAt = new Date();
 
   // Date — inline with "Date Issued:"
   doc.fontSize(12).text(issuedAt.toLocaleDateString(), 315, 148);
 
+  const userName =
+    typeof user.fullName === "object"
+      ? user.fullName?.[lang] || user.fullName?.en || user.fullName
+      : user.fullName;
+
   // Full Name — centered, lifted higher
-  doc.fontSize(32).text(user.fullName, 130, 230, {
+  doc.fontSize(32).text(userName, 130, 230, {
     width: 330,
     align: "center",
   });
@@ -40,8 +63,14 @@ async function createCertificatePDF(user, course, certId, req) {
     align: "center",
   });
 
+  const courseTitle =
+    typeof course.title === "string"
+      ? course.title
+      : course.title?.[lang] || course.title?.en || "Course Title";
+
+  console.log("Course title selected:", courseTitle);
   // Course Title — sharply lifted
-  doc.fontSize(18).text(course.title, 110, 410, {
+  doc.fontSize(18).text(courseTitle, 110, 410, {
     width: 370,
     align: "center",
   });
@@ -49,7 +78,8 @@ async function createCertificatePDF(user, course, certId, req) {
   // QR Code — unchanged
   const qrUrl = `${req.protocol}://${req.get(
     "host"
-  )}/certificate/verify/${certId}`;
+  )}/certificate/view/${certId}`;
+
   const qrDataUrl = await QRCode.toDataURL(qrUrl);
   doc.image(qrDataUrl, 260, 500, { width: 80 });
 

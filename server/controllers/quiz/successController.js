@@ -33,14 +33,13 @@ exports.renderSuccessPage = async (req, res) => {
       user,
       lang,
       translations,
-      pageTitle: "Course Completed",
+      pageTitle: req.__("course.completed"),
       showSidebarToggle: true,
       currentLesson: null,
       pageStyles: ["sidebar.css", "quiz.css", "quiz-result.css"],
       pageScripts: ["courseSidebar.js"],
       hasCompletedCourse,
     });
-    
   } catch (err) {
     console.error("Success page error:", err);
     res.status(500).send("Error loading success page.");

@@ -18,7 +18,8 @@
   },
   "subheader": {
     "welcome": "Welcome",
-    "completedLabel": "Completed:"
+    "completedLabel": "Completed:",
+    "courses": "Courses"
   },
   "dashboard": {
     "cardBadge": "Course",
@@ -29,7 +30,7 @@
     "infoAlt": "Course Info"
   },
   "courseMarket": {
-    "enroll": "Enroll",
+    "enroll": "Enrol",
     "enrolled": "Enrolled",
     "courseBadge": "Course"
   },
@@ -55,6 +56,9 @@
     "congrats": "We congratulate you on completing the course and wish you great success in applying your new knowledge.",
     "certificateInfo": "If you’ve completed all the lessons in the course, you can obtain your certificate by downloading it using the buttons below.",
     "warning": "You must complete all lessons to unlock the certificate."
+  },
+  "course": {
+    "completed": "Course Completed"
   },
   "quizResult": {
     "passed": "Passed",
