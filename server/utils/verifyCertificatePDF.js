@@ -2,6 +2,7 @@ const PDFDocument = require("pdfkit");
 const fs = require("fs");
 const path = require("path");
 
+// Generate Verififcation pdf
 async function generateVerifiedCertificatePDF(user, course, cert, lang = "en") {
   const fontPath = path.join(__dirname, "../fonts/Cairo-Regular.ttf");
   const pdfPath = path.join(
