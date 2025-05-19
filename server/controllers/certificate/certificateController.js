@@ -69,6 +69,7 @@ exports.generateCertificate = async (req, res) => {
       filePath: `/certificates/${fileName}`,
       issuedAt,
       certId: certificateId,
+      lang,
     });
 
     await user.save();

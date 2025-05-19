@@ -20,7 +20,7 @@ async function createCertificatePDF(user, course, certId, req) {
   const backgroundPath =
     lang === "ar"
       ? "templates/certificate-bg-ar.png"
-      : "templates/certificate-bg.png";
+      : "templates/certificate-bg-en.png";
 
   const bgPath = path.join(__dirname, "..", backgroundPath);
 
@@ -36,15 +36,21 @@ async function createCertificatePDF(user, course, certId, req) {
   doc.fillColor("white");
 
   if (lang === "ar") {
-    doc.font(fontPath); // ✅ Arabic-safe font
+    doc.font(fontPath); // Arabic-safe font
   } else {
-    doc.font("Helvetica-Bold"); // ✅ Default English
+    doc.font("Helvetica-Bold"); // Default English
   }
 
   const issuedAt = new Date();
 
   // Date — inline with "Date Issued:"
-  doc.fontSize(12).text(issuedAt.toLocaleDateString(), 315, 148);
+  doc
+    .fontSize(12)
+    .text(
+      issuedAt.toLocaleDateString(lang === "ar" ? "ar-EG" : "en-GB"),
+      315,
+      148
+    );
 
   const userName =
     typeof user.fullName === "object"

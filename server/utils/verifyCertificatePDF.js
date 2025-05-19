@@ -21,7 +21,7 @@ async function generateVerifiedCertificatePDF(user, course, cert, lang = "en") {
   const backgroundPath =
     lang === "ar"
       ? "templates/verified-certificate-ar.png"
-      : "templates/verified-certificate.png";
+      : "templates/verified-certificate-en.png";
 
   const bgPath = path.join(__dirname, "..", backgroundPath);
 
@@ -54,9 +54,16 @@ async function generateVerifiedCertificatePDF(user, course, cert, lang = "en") {
     align: "center",
   });
 
-  doc.fontSize(12).text(cert.issuedAt.toLocaleDateString(), 100, 757, {
-    align: "center",
-  });
+  doc
+    .fontSize(12)
+    .text(
+      cert.issuedAt.toLocaleDateString(lang === "ar" ? "ar-EG" : "en-GB"),
+      100,
+      757,
+      {
+        align: "center",
+      }
+    );
   doc.fontSize(12).text("N/A", 50, 793, {
     align: "center",
   });
