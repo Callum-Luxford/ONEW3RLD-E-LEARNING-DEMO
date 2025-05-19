@@ -106,7 +106,7 @@ const {
 
 exports.renderVerifiedCertificatePDF = async (req, res) => {
   const { certId } = req.params;
-  const lang = req.cookies?.lang || "en";
+  const lang = cert.lang || req.cookies?.lang || "en";
 
   const user = await User.findOne({ "certificates.certId": certId });
   if (!user) return res.status(404).send("Certificate not found");
