@@ -106,14 +106,19 @@ const {
 
 exports.renderVerifiedCertificatePDF = async (req, res) => {
   const { certId } = req.params;
-  
+
   const user = await User.findOne({ "certificates.certId": certId });
   if (!user) return res.status(404).send("Certificate not found");
-  
+
   const cert = user.certificates.find((c) => c.certId === certId);
-  
+
   const lang = cert.lang || req.cookies?.lang || "en";
-  
+
+  console.log("🧾 Requested certId:", certId);
+  console.log("🧾 cert.lang:", cert.lang);
+  console.log("🧾 cookie.lang:", req.cookies?.lang);
+  console.log("🧾 selected lang:", lang);
+
   const course = await Course.findById(cert.courseId);
 
   const pdfPath = await generateVerifiedCertificatePDF(
