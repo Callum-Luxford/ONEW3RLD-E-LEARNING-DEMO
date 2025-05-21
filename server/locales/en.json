@@ -32,7 +32,8 @@
   "courseMarket": {
     "enroll": "Enrol",
     "enrolled": "Enrolled",
-    "courseBadge": "Course"
+    "courseBadge": "Course",
+    "locked": "Locked"
   },
   "lesson": {
     "play": "Play",

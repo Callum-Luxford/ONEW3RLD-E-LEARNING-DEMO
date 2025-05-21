@@ -11,6 +11,11 @@ const courseSchema = new mongoose.Schema({
     ar: { type: String },
   },
 
+  locked: {
+    type: Boolean,
+    default: false,
+  },
+
   successMessage: {
     heading: { type: String, default: "Congratulations {{name}}!" },
     body: {

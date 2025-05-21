@@ -32,7 +32,8 @@
   "courseMarket": {
     "enroll": "التسجيل",
     "enrolled": "مسجل",
-    "courseBadge": "دورة"
+    "courseBadge": "دورة",
+    "locked": "مغلق"
   },
   "lesson": {
     "play": "تشغيل",

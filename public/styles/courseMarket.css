@@ -111,5 +111,24 @@
 
 .course-card-footer {
     margin-top: auto;
-    /* 📌 Pushes it to bottom inside flex layout */
+    /* Pushes it to bottom inside flex layout */
+}
+
+
+/* === LOCKED COURSES TEMP === */
+/* === LOCKED COURSES TEMP === */
+/* === LOCKED COURSES TEMP === */
+.lock-icon-container {
+    display: flex;
+    gap: .2rem;
+}
+
+.enroll-btn.locked {
+    background-color: #ccc;
+    color: #555;
+    cursor: not-allowed;
+}
+
+.lock-icon {
+    height: 18px;
 }

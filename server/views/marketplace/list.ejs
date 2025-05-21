@@ -25,17 +25,25 @@
                 </p>
 
                 <div class="course-card-footer">
-                    <% if (isEnrolled) { %>
-                        <button class="enroll-btn enrolled" disabled>
-                            <%= __('courseMarket.enrolled') %>
+                    <% if (course.locked) { %>
+                        <button class="enroll-btn locked" disabled title="This course is locked for demo">
+                            <div class="lock-icon-container">
+                                <img src="/icons/lock.png" alt="Locked" class="lock-icon" />
+                                <!-- <%= __('courseMarket.locked') || 'Locked' %> -->
+                            </div>
                         </button>
-                        <% } else { %>
-                            <form method="POST" action="/courses/<%= course._id %>/enroll">
-                                <button type="submit" class="enroll-btn">
-                                    <%= __('courseMarket.enroll') %>
-                                </button>
-                            </form>
-                            <% } %>
+                        <% } else if (isEnrolled) { %>
+                            <button class="enroll-btn enrolled" disabled>
+                                <%= __('courseMarket.enrolled') %>
+                            </button>
+                            <% } else { %>
+                                <form method="POST" action="/courses/<%= course._id %>/enroll">
+                                    <button type="submit" class="enroll-btn">
+                                        <%= __('courseMarket.enroll') %>
+                                    </button>
+                                </form>
+                                <% } %>
+
                 </div>
             </div>
             <% }) %>
